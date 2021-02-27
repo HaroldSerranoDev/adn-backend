@@ -12,10 +12,8 @@ public class FabricaAlquiler {
                 comandoAlquiler.getId(),
                 comandoAlquiler.getFechaAlquiler(),
                 comandoAlquiler.getFechaEntrega(),
-                comandoAlquiler.getCliente(),
-                comandoAlquiler.getMoto(),
-                comandoAlquiler.getValorPago()
+                comandoAlquiler.getIdCliente(),
+                comandoAlquiler.getIdMoto()
         );
     }
-
 }

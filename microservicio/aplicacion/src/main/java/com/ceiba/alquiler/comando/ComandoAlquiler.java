@@ -9,14 +9,12 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
 public class ComandoAlquiler {
 
     private Long id;
     private String fechaAlquiler;
     private String fechaEntrega;
-    private Cliente cliente;
-    private Moto moto;
-    private double valorPago;
+    private Long idCliente;
+    private Long idMoto;
 }

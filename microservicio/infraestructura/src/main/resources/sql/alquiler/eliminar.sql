@@ -1,3 +1,3 @@
 delete 
-from usuario
+from alquiler
 where id = :id
