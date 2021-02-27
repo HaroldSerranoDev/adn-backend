@@ -1,10 +1,7 @@
 package com.ceiba.moto.adaptador.dao;
 
-import com.ceiba.alquiler.modelo.entidad.Alquiler;
-import com.ceiba.moto.modelo.dto.DtoMoto;
 import com.ceiba.infraestructura.jdbc.MapperResult;
-import com.ceiba.moto.modelo.entidad.Marca;
-import com.ceiba.moto.modelo.entidad.TipoMoto;
+import com.ceiba.moto.modelo.dto.DtoMoto;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
@@ -17,11 +14,11 @@ public class MapeoMoto implements RowMapper<DtoMoto>, MapperResult {
 
         Long id = resultSet.getLong("id");
         String matricula = resultSet.getString("matricula");
-        Marca marca= Marca.valueOf(resultSet.getString("marca"));
-        Integer modelo= resultSet.getInt("modelo");
-        TipoMoto tipoMoto = TipoMoto.valueOf(resultSet.getString("tipo_moto"));
-        Integer kilometrosRecorridos = resultSet.getInt("kilometros_recorridos");
-        Double precioAlquiler = resultSet.getDouble("precio_alquiler");
+        String marca= resultSet.getString("marca");
+        int modelo= resultSet.getInt("modelo");
+        String tipoMoto = resultSet.getString("tipo_moto");
+        int kilometrosRecorridos = resultSet.getInt("kilometros_recorridos");
+        double precioAlquiler = resultSet.getDouble("precio_alquiler");
 
         return new DtoMoto(id,matricula,marca,modelo,tipoMoto,kilometrosRecorridos,precioAlquiler);
     }

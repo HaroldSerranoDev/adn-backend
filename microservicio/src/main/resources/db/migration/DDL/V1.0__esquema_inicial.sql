@@ -3,8 +3,8 @@ create table cliente (
  nombre varchar(150) not null,
  direccion varchar(255) not null,
  telefono varchar(12) not null,
- cedula varchar(12) not null,
- correo varchar(100) not null,
+ cedula varchar(12) not null unique,
+ correo varchar(100) not null unique,
  primary key (id)
 );
 

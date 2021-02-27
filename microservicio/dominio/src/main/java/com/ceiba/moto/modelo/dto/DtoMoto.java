@@ -10,9 +10,9 @@ import lombok.Getter;
 public class DtoMoto {
     private Long id;
     private String matricula;
-    private Marca marcaEnum;
+    private String marca;
     private int modelo;
-    private TipoMoto tipoMotoEnum;
+    private String tipoMoto;
     private int kilometros_recorridos;
     private double precioAlquiler;
 
