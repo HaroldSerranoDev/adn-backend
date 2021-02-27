@@ -1,5 +1,6 @@
 package com.ceiba.moto.adaptador.dao;
 
+import com.ceiba.cliente.adaptador.dao.MapeoCliente;
 import com.ceiba.moto.modelo.dto.DtoMoto;
 import com.ceiba.moto.puerto.dao.DaoMoto;
 import com.ceiba.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
@@ -23,7 +24,7 @@ public class DaoMotoMysql implements DaoMoto {
 
     @Override
     public List<DtoMoto> listar() {
-        return null;
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().query(sqlListar, new MapeoMoto());
     }
 
     @Override

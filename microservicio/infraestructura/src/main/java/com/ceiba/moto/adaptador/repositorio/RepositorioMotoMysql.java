@@ -12,13 +12,13 @@ public class RepositorioMotoMysql implements RepositorioMoto {
 
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
 
-    @SqlStatement(namespace="moto", value="crear")
+    @SqlStatement(namespace = "moto", value = "crear")
     private static String sqlCrear;
 
-    @SqlStatement(namespace="moto", value="actualizar")
+    @SqlStatement(namespace = "moto", value = "actualizar")
     private static String sqlActualizar;
 
-    @SqlStatement(namespace="moto", value="eliminar")
+    @SqlStatement(namespace = "moto", value = "eliminar")
     private static String sqlEliminar;
 
 
@@ -28,7 +28,9 @@ public class RepositorioMotoMysql implements RepositorioMoto {
 
     @Override
     public Long crear(Moto moto) {
-        return this.customNamedParameterJdbcTemplate.crear(moto, sqlCrear);
+        MapSqlParameterSource paramSource = realizarAsignacionDeParametrosParaConsulta(moto);
+
+        return Long.valueOf(this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().update(sqlCrear, paramSource));
     }
 
     @Override
@@ -52,7 +54,22 @@ public class RepositorioMotoMysql implements RepositorioMoto {
 
     @Override
     public void actualizar(Moto moto) {
-        this.customNamedParameterJdbcTemplate.actualizar(moto, sqlActualizar);
+        MapSqlParameterSource paramSource = realizarAsignacionDeParametrosParaConsulta(moto);
+        paramSource.addValue("id", moto.getId());
+
+        this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().update(sqlActualizar, paramSource);
+    }
+
+    public MapSqlParameterSource realizarAsignacionDeParametrosParaConsulta(Moto moto) {
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("matricula", moto.getMatricula());
+        paramSource.addValue("modelo", moto.getModelo());
+        paramSource.addValue("tipoMoto", moto.getTipoMoto().toString());
+        paramSource.addValue("marca", moto.getMarca().toString());
+        paramSource.addValue("kilometrosRecorridos", moto.getKilometrosRecorridos());
+        paramSource.addValue("precioAlquiler", moto.getPrecioAlquiler());
+
+        return paramSource;
     }
 
 }

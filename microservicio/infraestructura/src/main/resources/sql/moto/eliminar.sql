@@ -1,3 +1,3 @@
 delete 
-from usuario
+from moto
 where id = :id

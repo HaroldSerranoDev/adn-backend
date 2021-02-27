@@ -8,24 +8,24 @@ public class Moto {
 
     private Long id;
     private String matricula;
-    private Marca marcaEnum;
+    private Marca marca;
     private int modelo;
-    private TipoMoto tipoMotoEnum;
-    private int kilometros_recorridos;
+    private TipoMoto tipoMoto;
+    private int kilometrosRecorridos;
     private double precioAlquiler;
 
-    public Moto(Long id, String matricula, Marca marcaEnum, int modelo, TipoMoto tipoMotoEnum, double precioAlquiler) {
+    public Moto(Long id, String matricula, Marca marca, int modelo, TipoMoto tipoMoto, int kilometrosRecorridos, double precioAlquiler) {
         this.id = id;
         this.matricula = matricula;
-        this.marcaEnum = marcaEnum;
+        this.marca = marca;
         this.modelo = modelo;
-        this.tipoMotoEnum = tipoMotoEnum;
-        this.kilometros_recorridos = 0;
+        this.tipoMoto = tipoMoto;
+        this.kilometrosRecorridos = kilometrosRecorridos;
         this.precioAlquiler = precioAlquiler;
     }
 
-    public void setKilometros_recorridos(int kilometros_recorridos) {
-        this.kilometros_recorridos = kilometros_recorridos;
+    public void setKilometrosRecorridos(int kilometrosRecorridos) {
+        this.kilometrosRecorridos = kilometrosRecorridos;
     }
 
     public void setPrecioAlquiler(double precioAlquiler) {

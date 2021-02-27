@@ -11,9 +11,10 @@ public class FabricaMoto {
         return new Moto(
                 comandoMoto.getId(),
                 comandoMoto.getMatricula(),
-                comandoMoto.getMarcaEnum(),
+                comandoMoto.getMarca(),
                 comandoMoto.getModelo(),
-                comandoMoto.getTipoMotoEnum(),
+                comandoMoto.getTipoMoto(),
+                comandoMoto.getKilometrosRecorridos(),
                 comandoMoto.getPrecioAlquiler()
         );
     }

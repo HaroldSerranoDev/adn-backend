@@ -1,2 +1,2 @@
-select id,nombre,clave,fecha_creacion
-from usuario
+select id, matricula, marca, modelo, tipo_moto, kilometros_recorridos, precio_alquiler
+from moto
