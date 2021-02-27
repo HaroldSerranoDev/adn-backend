@@ -1,6 +1,5 @@
 package com.ceiba.cliente.servicio;
 
-import com.ceiba.cliente.modelo.entidad.Cliente;
 import com.ceiba.cliente.puerto.repositorio.RepositorioCliente;
 
 public class ServicioEliminarCliente {
@@ -15,12 +14,13 @@ public class ServicioEliminarCliente {
     }
 
     public void ejecutar(Long id) {
+        validarExistencia(id);
         this.repositorioCliente.eliminar(id);
     }
 
 
-    private void validarExistencia(Cliente cliente) {
-        boolean existe = this.repositorioCliente.existePorId(cliente.getId());
+    private void validarExistencia(Long idCliente) {
+        boolean existe = this.repositorioCliente.existePorId(idCliente);
         if(!existe) {
             // lanzar error, objeto no existente
         }

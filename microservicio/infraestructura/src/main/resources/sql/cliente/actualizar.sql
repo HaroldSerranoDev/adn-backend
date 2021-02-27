@@ -1,5 +1,7 @@
-update usuario
+update cliente
 set nombre = :nombre,
-	clave = :clave,
-	fecha_creacion = :fechaCreacion
+	direccion = :direccion,
+	telefono = :telefono,
+	cedula = :cedula,
+	correo = :correo
 where id = :id

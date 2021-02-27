@@ -1,3 +1,3 @@
 delete 
-from usuario
+from cliente
 where id = :id
