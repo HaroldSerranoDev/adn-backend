@@ -18,5 +18,5 @@ public class ComandoDevolucion {
     private Long id;
     private String fechaDevolucion;
     private int kilometrosFinales;
-    private Alquiler alquiler;
+    private Long idAlquiler;
 }

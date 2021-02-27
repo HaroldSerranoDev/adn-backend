@@ -1,1 +1,1 @@
-insert into usuario (nombre, clave,fecha_creacion) values (:nombre, :clave, :fechaCreacion)
+insert into devolucion (fecha_devolucion, km_finales, alquiler_id) values (:fechaDevolucion, :kilometrosFinales, :idAlquiler)

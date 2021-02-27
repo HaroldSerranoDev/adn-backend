@@ -12,7 +12,7 @@ public class FabricaDevolucion {
                 comandoDevolucion.getId(),
                 comandoDevolucion.getFechaDevolucion(),
                 comandoDevolucion.getKilometrosFinales(),
-                comandoDevolucion.getAlquiler()
+                comandoDevolucion.getIdAlquiler()
         );
     }
 

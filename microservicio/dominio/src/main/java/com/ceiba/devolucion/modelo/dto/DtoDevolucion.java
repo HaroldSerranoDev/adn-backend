@@ -1,6 +1,6 @@
 package com.ceiba.devolucion.modelo.dto;
 
-import com.ceiba.alquiler.modelo.entidad.Alquiler;
+import com.ceiba.alquiler.modelo.dto.DtoAlquiler;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -12,6 +12,5 @@ public class DtoDevolucion {
     private Long id;
     private LocalDate fechaDevolucion;
     private int kilometrosFinales;
-    private Alquiler alquiler;
-
+    private DtoAlquiler alquiler;
 }
