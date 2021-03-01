@@ -14,12 +14,6 @@ public class RepositorioDevolucionMysql implements RepositorioDevolucion {
     @SqlStatement(namespace="devolucion", value="crear")
     private static String sqlCrear;
 
-    @SqlStatement(namespace="devolucion", value="actualizar")
-    private static String sqlActualizar;
-
-    @SqlStatement(namespace="devolucion", value="eliminar")
-    private static String sqlEliminar;
-
 
     public RepositorioDevolucionMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;

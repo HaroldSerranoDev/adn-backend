@@ -21,6 +21,12 @@ public class RepositorioClienteMysql implements RepositorioCliente {
     @SqlStatement(namespace="cliente", value="eliminar")
     private static String sqlEliminar;
 
+    @SqlStatement(namespace="cliente", value="existePorCedulaOCorreoExcluyendoId")
+    private static String sqlExistePorCedulaOCorreo;
+
+    @SqlStatement(namespace="cliente", value="existePorId")
+    private static String sqlExistePorId;
+
 
     public RepositorioClienteMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
@@ -40,13 +46,22 @@ public class RepositorioClienteMysql implements RepositorioCliente {
     }
 
     @Override
-    public boolean existePorCedula(String cedula) {
-        return false;
+    public boolean existePorCedulaOCorreoExcluyendoId(String cedula, String correo, Long id) {
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("cedula", cedula);
+        paramSource.addValue("correo", '%'+correo+'%');
+        paramSource.addValue("id", id);
+
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorCedulaOCorreo,paramSource, Boolean.class);
     }
+
 
     @Override
     public boolean existePorId(Long id) {
-        return false;
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("id", id);
+
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorId,paramSource, Boolean.class);
     }
 
     @Override

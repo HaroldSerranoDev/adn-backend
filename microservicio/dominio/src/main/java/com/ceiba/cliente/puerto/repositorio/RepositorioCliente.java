@@ -25,11 +25,11 @@ public interface RepositorioCliente {
 
 
     /**
-     * Permite validar si existe un cliente con una cédula
+     * Permite validar si existe un cliente con una cédula o con un correo
      * @param cedula
      * @return si existe o no
      */
-    boolean existePorCedula(String cedula);
+    boolean existePorCedulaOCorreoExcluyendoId(String cedula, String correo,Long id);
 
     /**
      * Permite validar si existe un cliente por un id

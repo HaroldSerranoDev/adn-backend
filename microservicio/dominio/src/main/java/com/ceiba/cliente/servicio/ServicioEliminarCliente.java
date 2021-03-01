@@ -1,5 +1,7 @@
 package com.ceiba.cliente.servicio;
 
+import com.ceiba.cliente.excepcion.ClienteException;
+import com.ceiba.cliente.modelo.entidad.Cliente;
 import com.ceiba.cliente.puerto.repositorio.RepositorioCliente;
 
 public class ServicioEliminarCliente {
@@ -14,15 +16,15 @@ public class ServicioEliminarCliente {
     }
 
     public void ejecutar(Long id) {
-        validarExistencia(id);
+        validarExistenciaPreviaCliente(id);
         this.repositorioCliente.eliminar(id);
     }
 
 
-    private void validarExistencia(Long idCliente) {
-        boolean existe = this.repositorioCliente.existePorId(idCliente);
-        if(!existe) {
-            // lanzar error, objeto no existente
+    private void validarExistenciaPreviaCliente(Long id) {
+        boolean existe = this.repositorioCliente.existePorId(id);
+        if (!existe) {
+            throw new ClienteException(EL_CLIENTE_QUE_INTENTA_ELIMINAR_NO_EXISTE_EN_EL_SISTEMA);
         }
     }
 }
