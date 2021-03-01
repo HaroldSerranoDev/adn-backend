@@ -15,6 +15,8 @@ public class Cliente {
     private static final String SE_DEBE_INGRESAR_EL_CORREO_DEL_CLIENTE = "Se debe ingresar el correo del cliente";
     private static final String DEBE_INGRESAR_UN_VALOR_NUMERICO_PARA_EL_TELEFONO = "Debe ingresar un valor númerico para el telefono";
     private static final String DEBE_INGRESAR_UN_VALOR_NUMERICO_PARA_LA_CEDULA = "Debe ingresar un valor númerico para la cédula";
+    private static final String DEBE_INGRESAR_UN_FORMATO_DE_CORREO_VALIDO = "Debe ingresar un formato de correo válido";
+    private static final String REGEX_CORREO = "^(.+)@(.+)$";
     private static final int LONGITUD_MINIMA_DE_DATOS = 1;
 
 
@@ -42,6 +44,8 @@ public class Cliente {
 
         validarNumerico(cedula,DEBE_INGRESAR_UN_VALOR_NUMERICO_PARA_LA_CEDULA );
         validarNumerico(telefono,DEBE_INGRESAR_UN_VALOR_NUMERICO_PARA_EL_TELEFONO );
+
+        validarRegex(correo, REGEX_CORREO,DEBE_INGRESAR_UN_FORMATO_DE_CORREO_VALIDO);
 
         this.id = id;
         this.nombre = nombre;

@@ -25,11 +25,11 @@ public interface RepositorioMoto {
     void eliminar(Long id);
 
     /**
-     * Permite validar si existe una moto con una matricula
+     * Permite validar si existe una moto con una matricula excluyendo el Id
      * @param matricula
      * @return si existe o no
      */
-    boolean existePorMatricula(String matricula);
+    boolean existePorMatriculaExcluyendoId(String matricula, Long id);
 
     /**
      * Permite validar si existe una moto por un id

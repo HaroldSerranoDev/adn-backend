@@ -21,6 +21,12 @@ public class RepositorioMotoMysql implements RepositorioMoto {
     @SqlStatement(namespace = "moto", value = "eliminar")
     private static String sqlEliminar;
 
+    @SqlStatement(namespace="moto", value="existePorMatriculaExcluyendoId")
+    private static String existePorMatriculaExcluyendoId;
+
+    @SqlStatement(namespace="moto", value="existePorId")
+    private static String sqlExistePorId;
+
 
     public RepositorioMotoMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
@@ -42,13 +48,20 @@ public class RepositorioMotoMysql implements RepositorioMoto {
     }
 
     @Override
-    public boolean existePorMatricula(String matricula) {
-        return false;
+    public boolean existePorMatriculaExcluyendoId(String matricula, Long id) {
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("matricula", matricula);
+        paramSource.addValue("id", id);
+
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(existePorMatriculaExcluyendoId,paramSource, Boolean.class);
     }
 
     @Override
     public boolean existePorId(Long id) {
-        return false;
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("id", id);
+
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorId,paramSource, Boolean.class);
     }
 
 

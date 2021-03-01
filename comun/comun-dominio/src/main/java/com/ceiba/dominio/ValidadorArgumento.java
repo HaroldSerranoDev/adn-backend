@@ -1,19 +1,18 @@
 package com.ceiba.dominio;
 
+import com.ceiba.dominio.excepcion.ExcepcionLongitudValor;
+import com.ceiba.dominio.excepcion.ExcepcionValorInvalido;
+import com.ceiba.dominio.excepcion.ExcepcionValorObligatorio;
+
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.ceiba.dominio.excepcion.ExcepcionLongitudValor;
-import com.ceiba.dominio.excepcion.ExcepcionValorInvalido;
-import com.ceiba.dominio.excepcion.ExcepcionValorObligatorio;
-
 public class ValidadorArgumento {
-	
+
 	private ValidadorArgumento() {}
 
     public static void validarObligatorio(Object valor, String mensaje) {
@@ -21,13 +20,13 @@ public class ValidadorArgumento {
             throw new ExcepcionValorObligatorio(mensaje);
         }
     }
-    
+
     public static void validarLongitud(String valor,int longitud,String mensaje){
         if(valor.length() < longitud){
             throw new ExcepcionLongitudValor(mensaje);
         }
     }
-    
+
     public static <T> void validarNoVacio(List<T> lista, String mensaje) {
         if (lista.isEmpty()) {
             throw new ExcepcionValorObligatorio(mensaje);
@@ -35,7 +34,7 @@ public class ValidadorArgumento {
     }
 
     public static void validarPositivo(Double valor, String mensaje) {
-        if (valor <= 0) {
+        if (valor < 0) {
             throw new ExcepcionValorInvalido(mensaje);
         }
     }
@@ -73,7 +72,7 @@ public class ValidadorArgumento {
         }
     }
 
-    public static <E extends Enum<E>> E validarValido(String valor, Class<E> enumAObtener, String mensaje) {
+    public static <E extends Enum<E>> E validarEnumValido(String valor, Class<E> enumAObtener, String mensaje) {
         E enumObtenido = null;
         if(null != valor) {
             Optional<E> resultadoOpcional = Arrays.stream(enumAObtener.getEnumConstants())

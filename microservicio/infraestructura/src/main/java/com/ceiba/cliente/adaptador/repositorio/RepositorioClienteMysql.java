@@ -22,7 +22,7 @@ public class RepositorioClienteMysql implements RepositorioCliente {
     private static String sqlEliminar;
 
     @SqlStatement(namespace="cliente", value="existePorCedulaOCorreoExcluyendoId")
-    private static String sqlExistePorCedulaOCorreo;
+    private static String sqlExistePorCedulaOCorreoExcluyendoId;
 
     @SqlStatement(namespace="cliente", value="existePorId")
     private static String sqlExistePorId;
@@ -52,7 +52,7 @@ public class RepositorioClienteMysql implements RepositorioCliente {
         paramSource.addValue("correo", '%'+correo+'%');
         paramSource.addValue("id", id);
 
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorCedulaOCorreo,paramSource, Boolean.class);
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorCedulaOCorreoExcluyendoId,paramSource, Boolean.class);
     }
 
 

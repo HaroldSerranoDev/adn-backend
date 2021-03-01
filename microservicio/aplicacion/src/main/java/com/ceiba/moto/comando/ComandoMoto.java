@@ -15,9 +15,9 @@ public class ComandoMoto {
 
     private Long id;
     private String matricula;
-    private Marca marca;
-    private int modelo;
-    private TipoMoto tipoMoto;
-    private int kilometrosRecorridos;
-    private double precioAlquiler;
+    private String marca;
+    private Integer modelo;
+    private String tipoMoto;
+    private Integer kilometrosRecorridos;
+    private Double precioAlquiler;
 }

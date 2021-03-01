@@ -25,6 +25,8 @@ public class ServicioCrearClienteTest {
     private static final String SE_DEBE_INGRESAR_EL_CORREO_DEL_CLIENTE = "Se debe ingresar el correo del cliente";
     private static final String DEBE_INGRESAR_UN_VALOR_NUMERICO_PARA_EL_TELEFONO = "Debe ingresar un valor númerico para el telefono";
     private static final String DEBE_INGRESAR_UN_VALOR_NUMERICO_PARA_LA_CEDULA = "Debe ingresar un valor númerico para la cédula";
+    private static final String DEBE_INGRESAR_UN_FORMATO_DE_CORREO_VALIDO = "Debe ingresar un formato de correo válido";
+
 
     @Mock
     private RepositorioCliente repositorioCliente;
@@ -141,6 +143,14 @@ public class ServicioCrearClienteTest {
         ClienteTestDataBuilder clienteTestDataBuilder = new ClienteTestDataBuilder().conCorreo("");
         // act - assert
         BasePrueba.assertThrows(() -> clienteTestDataBuilder.build(), ExcepcionLongitudValor.class, SE_DEBE_INGRESAR_EL_CORREO_DEL_CLIENTE);
+    }
+
+    @Test
+    public void validarFormatoCorreoClienteTest() {
+        // arrange
+        ClienteTestDataBuilder clienteTestDataBuilder = new ClienteTestDataBuilder().conCorreo("prueba.com");
+        // act - assert
+        BasePrueba.assertThrows(() -> clienteTestDataBuilder.build(), ExcepcionValorInvalido.class, DEBE_INGRESAR_UN_FORMATO_DE_CORREO_VALIDO);
     }
 
 
