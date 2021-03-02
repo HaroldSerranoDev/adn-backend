@@ -4,6 +4,8 @@ import com.ceiba.dominio.excepcion.ExcepcionLongitudValor;
 import com.ceiba.dominio.excepcion.ExcepcionValorInvalido;
 import com.ceiba.dominio.excepcion.ExcepcionValorObligatorio;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +15,10 @@ import java.util.regex.Pattern;
 
 public class ValidadorArgumento {
 
-	private ValidadorArgumento() {}
+    private static final String FORMATO_FECHA = "yyyy-MM-dd";
+
+
+    private ValidadorArgumento() {}
 
     public static void validarObligatorio(Object valor, String mensaje) {
         if (valor == null) {
@@ -91,6 +96,27 @@ public class ValidadorArgumento {
         try {
             Long.parseLong(valor);
         } catch (NumberFormatException numberFormatException) {
+            throw new ExcepcionValorInvalido(mensaje);
+        }
+    }
+
+    public static void validarFormatoFecha(String valor, String mensaje) {
+
+        Pattern patronFecha = Pattern.compile("\\d{4}-\\d{2}-\\d{2}");
+
+        Matcher comparadorFormatoFecha = patronFecha.matcher(valor);
+
+        if (!comparadorFormatoFecha.matches()) {
+            throw new ExcepcionValorInvalido(mensaje);
+        }
+    }
+
+    public static void validarFechaCorrecta(String valor, String mensaje){
+        try {
+            SimpleDateFormat formatoFecha = new SimpleDateFormat(FORMATO_FECHA);
+            formatoFecha.setLenient(false);
+            formatoFecha.parse(valor);
+        } catch (ParseException parseException) {
             throw new ExcepcionValorInvalido(mensaje);
         }
     }
