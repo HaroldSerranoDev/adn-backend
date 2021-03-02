@@ -22,14 +22,14 @@ public class ServicioActualizarCliente {
         this.repositorioCliente.actualizar(cliente);
     }
 
-    private void validarExistenciaPreviaCliente(Cliente cliente) {
+    public void validarExistenciaPreviaCliente(Cliente cliente) {
         boolean existe = this.repositorioCliente.existePorId(cliente.getId());
         if (!existe) {
             throw new ClienteException(EL_CLIENTE_QUE_INTENTA_ACTUALIZAR_NO_EXISTE_EN_EL_SISTEMA);
         }
     }
 
-    private void validarExistenciaDeCedulaOCorreo(Cliente cliente) {
+    public void validarExistenciaDeCedulaOCorreo(Cliente cliente) {
         boolean existe = repositorioCliente.existePorCedulaOCorreoExcluyendoId(cliente.getCedula(), cliente.getCorreo(), cliente.getId());
         if (existe) {
             throw new ExcepcionDuplicidad(EL_CORREO_O_LA_CEDULA_QUE_INTENTA_ASIGNAR_YA_EXISTE);

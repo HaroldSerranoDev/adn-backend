@@ -45,7 +45,7 @@ public class ServicioCrearClienteTest {
         Cliente cliente = new ClienteTestDataBuilder().build();
         Mockito.when(repositorioCliente.existePorCedulaOCorreoExcluyendoId(cliente.getCedula(), cliente.getCorreo(), cliente.getId())).thenReturn(true);
         // act - assert
-        BasePrueba.assertThrows(() -> servicioCrearCliente.ejecutar(cliente), ExcepcionDuplicidad.class, EL_CLIENTE_YA_EXISTE_EN_EL_SISTEMA);
+        BasePrueba.assertThrows(() -> servicioCrearCliente.validarExistenciaPreviaCliente(cliente), ExcepcionDuplicidad.class, EL_CLIENTE_YA_EXISTE_EN_EL_SISTEMA);
     }
 
     @Test

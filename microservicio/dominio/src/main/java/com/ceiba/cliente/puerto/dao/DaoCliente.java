@@ -12,15 +12,4 @@ public interface DaoCliente {
      */
     List<DtoCliente> listar();
 
-    /**
-     * Permite buscar un cliente por cédula
-     * @return un cliente
-     */
-    DtoCliente buscarPorCedula(String cedula);
-
-    /**
-     * Permite buscar un cliente por id
-     * @return un cliente
-     */
-    DtoCliente buscarPorId(Long id);
 }

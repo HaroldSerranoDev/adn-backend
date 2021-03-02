@@ -21,7 +21,7 @@ public class ServicioEliminarCliente {
     }
 
 
-    private void validarExistenciaPreviaCliente(Long id) {
+    public void validarExistenciaPreviaCliente(Long id) {
         boolean existe = this.repositorioCliente.existePorId(id);
         if (!existe) {
             throw new ClienteException(EL_CLIENTE_QUE_INTENTA_ELIMINAR_NO_EXISTE_EN_EL_SISTEMA);

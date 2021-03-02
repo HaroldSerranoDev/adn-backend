@@ -35,7 +35,7 @@ public class ServicioEliminarClienteTest {
                 build();
         Mockito.when(repositorioCliente.existePorId(cliente.getId())).thenReturn(false);
         // act - assert
-        BasePrueba.assertThrows(() -> servicioEliminarCliente.ejecutar(cliente.getId()), ClienteException.class, EL_CLIENTE_QUE_INTENTA_ELIMINAR_NO_EXISTE_EN_EL_SISTEMA);
+        BasePrueba.assertThrows(() -> servicioEliminarCliente.validarExistenciaPreviaCliente(cliente.getId()), ClienteException.class, EL_CLIENTE_QUE_INTENTA_ELIMINAR_NO_EXISTE_EN_EL_SISTEMA);
     }
 
     @Test

@@ -27,13 +27,4 @@ public class DaoClienteMysql implements DaoCliente {
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().query(sqlListar, new MapeoCliente());
     }
 
-    @Override
-    public DtoCliente buscarPorCedula(String cedula) {
-        return null;
-    }
-
-    @Override
-    public DtoCliente buscarPorId(Long id) {
-        return null;
-    }
 }

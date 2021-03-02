@@ -35,7 +35,7 @@ public class ServicioActualizarClienteTest {
         Cliente cliente = new ClienteTestDataBuilder().build();
         Mockito.when(repositorioCliente.existePorId(cliente.getId())).thenReturn(false);
         // act - assert
-        BasePrueba.assertThrows(() -> servicioActualizarCliente.ejecutar(cliente), ClienteException.class, EL_CLIENTE_QUE_INTENTA_ACTUALIZAR_NO_EXISTE_EN_EL_SISTEMA);
+        BasePrueba.assertThrows(() -> servicioActualizarCliente.validarExistenciaPreviaCliente(cliente), ClienteException.class, EL_CLIENTE_QUE_INTENTA_ACTUALIZAR_NO_EXISTE_EN_EL_SISTEMA);
     }
 
 
@@ -43,10 +43,9 @@ public class ServicioActualizarClienteTest {
     public void validarExcepcionCedulaOCorreoYaRegistradoTest() {
         // arrange
         Cliente cliente = new ClienteTestDataBuilder().build();
-        Mockito.when(repositorioCliente.existePorId(cliente.getId())).thenReturn(true);
         Mockito.when(repositorioCliente.existePorCedulaOCorreoExcluyendoId(cliente.getCedula(), cliente.getCorreo(), cliente.getId())).thenReturn(true);
         // act - assert
-        BasePrueba.assertThrows(() -> servicioActualizarCliente.ejecutar(cliente), ExcepcionDuplicidad.class, EL_CORREO_O_LA_CEDULA_QUE_INTENTA_ASIGNAR_YA_EXISTE);
+        BasePrueba.assertThrows(() -> servicioActualizarCliente.validarExistenciaDeCedulaOCorreo(cliente), ExcepcionDuplicidad.class, EL_CORREO_O_LA_CEDULA_QUE_INTENTA_ASIGNAR_YA_EXISTE);
     }
 
 
