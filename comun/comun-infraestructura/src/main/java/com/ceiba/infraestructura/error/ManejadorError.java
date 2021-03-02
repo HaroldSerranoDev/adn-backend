@@ -27,6 +27,11 @@ public class ManejadorError extends ResponseEntityExceptionHandler {
 
     private static final ConcurrentHashMap<String, Integer> CODIGOS_ESTADO = new ConcurrentHashMap<>();
 
+    private static  final String CLIENTE_EXCEPTION = "ClienteException";
+    private static  final String MOTO_EXCEPTION = "MotoException";
+    private static  final String ALQUILER_EXCEPTION = "AlquilerException";
+    private static  final String DEVOLUCION_EXCEPTION = "DevolucionException";
+
     public ManejadorError() {
         CODIGOS_ESTADO.put(ExcepcionLongitudValor.class.getSimpleName(), HttpStatus.BAD_REQUEST.value());
         CODIGOS_ESTADO.put(ExcepcionValorInvalido.class.getSimpleName(), HttpStatus.BAD_REQUEST.value());
@@ -34,7 +39,11 @@ public class ManejadorError extends ResponseEntityExceptionHandler {
         CODIGOS_ESTADO.put(ExcepcionValorObligatorio.class.getSimpleName(), HttpStatus.BAD_REQUEST.value());
         CODIGOS_ESTADO.put(ExcepcionDuplicidad.class.getSimpleName(), HttpStatus.BAD_REQUEST.value());
         CODIGOS_ESTADO.put(ExcepcionTecnica.class.getSimpleName(), HttpStatus.INTERNAL_SERVER_ERROR.value());
-        
+        CODIGOS_ESTADO.put(CLIENTE_EXCEPTION, HttpStatus.BAD_REQUEST.value());
+        CODIGOS_ESTADO.put(MOTO_EXCEPTION, HttpStatus.BAD_REQUEST.value());
+        CODIGOS_ESTADO.put(ALQUILER_EXCEPTION, HttpStatus.BAD_REQUEST.value());
+        CODIGOS_ESTADO.put(DEVOLUCION_EXCEPTION, HttpStatus.BAD_REQUEST.value());
+
         
         //en caso de tener otra excepcion matricularla aca
     }
