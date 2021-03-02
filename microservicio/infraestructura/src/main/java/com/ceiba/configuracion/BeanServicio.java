@@ -1,5 +1,6 @@
 package com.ceiba.configuracion;
 
+import com.ceiba.alquiler.puerto.dao.DaoAlquiler;
 import com.ceiba.alquiler.puerto.repositorio.RepositorioAlquiler;
 import com.ceiba.alquiler.servicio.ServicioActualizarAlquiler;
 import com.ceiba.alquiler.servicio.ServicioCrearAlquiler;
@@ -10,6 +11,7 @@ import com.ceiba.cliente.servicio.ServicioCrearCliente;
 import com.ceiba.cliente.servicio.ServicioEliminarCliente;
 import com.ceiba.devolucion.puerto.repositorio.RepositorioDevolucion;
 import com.ceiba.devolucion.servicio.ServicioCrearDevolucion;
+import com.ceiba.moto.puerto.dao.DaoMoto;
 import com.ceiba.moto.puerto.repositorio.RepositorioMoto;
 import com.ceiba.moto.servicio.ServicioActualizarMoto;
 import com.ceiba.moto.servicio.ServicioCrearMoto;
@@ -42,13 +44,13 @@ public class BeanServicio {
 
     //
     @Bean
-    public ServicioCrearAlquiler servicioCrearAlquiler(RepositorioAlquiler repositorioAlquiler) {
-        return new ServicioCrearAlquiler(repositorioAlquiler);
+    public ServicioCrearAlquiler servicioCrearAlquiler(RepositorioAlquiler repositorioAlquiler, RepositorioCliente repositorioCliente, RepositorioMoto repositorioMoto, DaoMoto daoMoto) {
+        return new ServicioCrearAlquiler(repositorioAlquiler,repositorioCliente,repositorioMoto,daoMoto);
     }
 
     @Bean
-    public ServicioActualizarAlquiler servicioActualizarAlquiler(RepositorioAlquiler repositorioAlquiler) {
-        return new ServicioActualizarAlquiler(repositorioAlquiler);
+    public ServicioActualizarAlquiler servicioActualizarAlquiler(RepositorioAlquiler repositorioAlquiler, RepositorioCliente repositorioCliente, RepositorioMoto repositorioMoto, DaoMoto daoMoto) {
+        return new ServicioActualizarAlquiler(repositorioAlquiler,repositorioCliente,repositorioMoto,daoMoto);
     }
 
     @Bean
@@ -75,8 +77,8 @@ public class BeanServicio {
 
     //
     @Bean
-    public ServicioCrearDevolucion servicioCrearDevolucion(RepositorioDevolucion repositorioDevolucion) {
-        return new ServicioCrearDevolucion(repositorioDevolucion);
+    public ServicioCrearDevolucion servicioCrearDevolucion(RepositorioDevolucion repositorioDevolucion, RepositorioAlquiler repositorioAlquiler, RepositorioMoto repositorioMoto, DaoAlquiler daoAlquiler) {
+        return new ServicioCrearDevolucion(repositorioDevolucion,repositorioAlquiler, repositorioMoto, daoAlquiler);
     }
 
     //
