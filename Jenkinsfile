@@ -29,7 +29,7 @@ pipeline {
 			submoduleCfg: [],
 			userRemoteConfigs: [[
 			credentialsId: 'GitHub_HaroldSerranoDev',
-			url:'https://github.com/HaroldSerranoDev'
+			url:'https://github.com/HaroldSerranoDev/adn-backend'
 			]]
 		])
       }
