@@ -36,6 +36,7 @@ create table devolucion (
  id int(11) not null auto_increment,
  fecha_devolucion date not null,
  km_finales smallint not null,
+ valor_pago_final double not null,
  alquiler_id int(11) not null unique,
  primary key (id),
  foreign key (alquiler_id) REFERENCES alquiler(id)
