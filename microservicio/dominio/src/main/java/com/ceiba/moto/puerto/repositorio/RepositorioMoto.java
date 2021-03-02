@@ -37,4 +37,12 @@ public interface RepositorioMoto {
      * @return si existe o no
      */
     boolean existePorId(Long id);
+
+    /**
+     * Permite actualizar los kilometros de la moto por Id
+     * @param totalKilometros
+     * @param idMoto
+     * @return si existe o no
+     */
+    void actualizarKilometrosMotoPorId(int totalKilometros, Long idMoto);
 }

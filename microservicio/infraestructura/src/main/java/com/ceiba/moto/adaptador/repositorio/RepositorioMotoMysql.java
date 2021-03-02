@@ -1,9 +1,9 @@
 package com.ceiba.moto.adaptador.repositorio;
 
-import com.ceiba.moto.modelo.entidad.Moto;
-import com.ceiba.moto.puerto.repositorio.RepositorioMoto;
 import com.ceiba.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
 import com.ceiba.infraestructura.jdbc.sqlstatement.SqlStatement;
+import com.ceiba.moto.modelo.entidad.Moto;
+import com.ceiba.moto.puerto.repositorio.RepositorioMoto;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Repository;
 
@@ -26,6 +26,9 @@ public class RepositorioMotoMysql implements RepositorioMoto {
 
     @SqlStatement(namespace="moto", value="existePorId")
     private static String sqlExistePorId;
+
+    @SqlStatement(namespace = "moto", value = "actualizarKilometrosMotoPorId")
+    private static String sqlActualizarKilometrosMotoPorId;
 
 
     public RepositorioMotoMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
@@ -83,6 +86,15 @@ public class RepositorioMotoMysql implements RepositorioMoto {
         paramSource.addValue("precioAlquiler", moto.getPrecioAlquiler());
 
         return paramSource;
+    }
+
+    @Override
+    public void actualizarKilometrosMotoPorId(int totalKilometros, Long idMoto) {
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("kilometrosFinales", totalKilometros);
+        paramSource.addValue("idMoto", idMoto);
+
+        this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().update(sqlActualizarKilometrosMotoPorId,paramSource);
     }
 
 }

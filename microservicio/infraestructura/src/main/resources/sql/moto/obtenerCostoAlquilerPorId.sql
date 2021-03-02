@@ -1,0 +1,1 @@
+select precio_alquiler from moto where id = :id

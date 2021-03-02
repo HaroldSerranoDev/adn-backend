@@ -50,7 +50,7 @@ public class ServicioCrearMotoTest {
         Moto moto = new MotoTestDataBuilder().build();
         Mockito.when(repositorioMoto.existePorMatriculaExcluyendoId(moto.getMatricula(), moto.getId())).thenReturn(true);
         // act - assert
-        BasePrueba.assertThrows(() -> servicioCrearMoto.ejecutar(moto), ExcepcionDuplicidad.class, LA_MOTO_YA_EXISTE_EN_EL_SISTEMA);
+        BasePrueba.assertThrows(() -> servicioCrearMoto.validarExistenciaPreviaMoto(moto), ExcepcionDuplicidad.class, LA_MOTO_YA_EXISTE_EN_EL_SISTEMA);
     }
 
     @Test

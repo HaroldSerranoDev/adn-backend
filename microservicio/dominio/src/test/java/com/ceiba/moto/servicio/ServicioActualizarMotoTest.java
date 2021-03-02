@@ -35,7 +35,7 @@ public class ServicioActualizarMotoTest {
                 build();
         Mockito.when(repositorioMoto.existePorId(moto.getId())).thenReturn(false);
         // act - assert
-        BasePrueba.assertThrows(() -> servicioActualizarMoto.ejecutar(moto), MotoException.class, LA_MOTO_QUE_INTENTA_ACTUALIZAR_NO_EXISTE_EN_EL_SISTEMA);
+        BasePrueba.assertThrows(() -> servicioActualizarMoto.validarExistencia(moto), MotoException.class, LA_MOTO_QUE_INTENTA_ACTUALIZAR_NO_EXISTE_EN_EL_SISTEMA);
     }
 
 

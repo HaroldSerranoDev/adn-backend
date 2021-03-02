@@ -13,14 +13,8 @@ public interface DaoMoto {
     List<DtoMoto> listar();
 
     /**
-     * Permite buscar una moto por matricula
+     * Permite obtener el costo del alquiler de una moto por id
      * @return una moto
      */
-    DtoMoto buscarPorMatricula(String matricula);
-
-    /**
-     * Permite buscar una moto por id
-     * @return una moto
-     */
-    DtoMoto buscarPorId(Long id);
+    Double obtenerCostoAlquiler(Long id);
 }

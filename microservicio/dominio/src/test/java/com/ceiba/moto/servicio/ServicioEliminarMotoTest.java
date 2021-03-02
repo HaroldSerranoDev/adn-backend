@@ -35,7 +35,7 @@ public class ServicioEliminarMotoTest {
                 build();
         Mockito.when(repositorioMoto.existePorId(moto.getId())).thenReturn(false);
         // act - assert
-        BasePrueba.assertThrows(() -> servicioEliminarMoto.ejecutar(moto.getId()), MotoException.class, LA_MOTO_QUE_INTENTA_ELIMINAR_NO_EXISTE_EN_EL_SISTEMA);
+        BasePrueba.assertThrows(() -> servicioEliminarMoto.validarExistenciaMoto(moto.getId()), MotoException.class, LA_MOTO_QUE_INTENTA_ELIMINAR_NO_EXISTE_EN_EL_SISTEMA);
     }
 
     @Test

@@ -19,7 +19,7 @@ public class ServicioActualizarMoto {
         this.repositorioMoto.actualizar(moto);
     }
 
-    private void validarExistencia(Moto moto) {
+    public void validarExistencia(Moto moto) {
         boolean existe = this.repositorioMoto.existePorId(moto.getId());
         if(!existe) {
            throw new MotoException(LA_MOTO_QUE_INTENTA_ACTUALIZAR_NO_EXISTE_EN_EL_SISTEMA);

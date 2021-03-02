@@ -20,7 +20,7 @@ public class ServicioCrearMoto {
         return this.repositorioMoto.crear(moto);
     }
 
-    private void validarExistenciaPreviaMoto(Moto moto) {
+    public void validarExistenciaPreviaMoto(Moto moto) {
         boolean existe = repositorioMoto.existePorMatriculaExcluyendoId(moto.getMatricula(), moto.getId());
         if (existe) {
             throw new ExcepcionDuplicidad(LA_MOTO_YA_EXISTE_EN_EL_SISTEMA);
