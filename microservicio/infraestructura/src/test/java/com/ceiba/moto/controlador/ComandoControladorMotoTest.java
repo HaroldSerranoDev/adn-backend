@@ -68,7 +68,7 @@ public class ComandoControladorMotoTest {
     @Test
     public void eliminar() throws Exception {
         // arrange
-        Long id = 3L;
+        Long id = 4L;
 
         // act - assert
         mocMvc.perform(delete("/motos/{id}", id)
