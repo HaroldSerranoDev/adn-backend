@@ -10,7 +10,6 @@ public class FabricaDevolucion {
     public Devolucion crear(ComandoDevolucion comandoDevolucion) {
         return new Devolucion(
                 comandoDevolucion.getId(),
-                comandoDevolucion.getFechaDevolucion(),
                 comandoDevolucion.getKilometrosFinales(),
                 comandoDevolucion.getIdAlquiler()
         );
