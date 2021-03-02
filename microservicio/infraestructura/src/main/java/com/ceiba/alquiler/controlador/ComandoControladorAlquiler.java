@@ -12,20 +12,20 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/alquileres")
-@Api(tags = { "Controlador comando alquiler"})
+@Api(tags = {"Controlador comando alquiler"})
 public class ComandoControladorAlquiler {
 
     private final ManejadorCrearAlquiler manejadorCrearAlquiler;
-	private final ManejadorEliminarAlquiler manejadorEliminarAlquiler;
-	private final ManejadorActualizarAlquiler manejadorActualizarAlquiler;
+    private final ManejadorEliminarAlquiler manejadorEliminarAlquiler;
+    private final ManejadorActualizarAlquiler manejadorActualizarAlquiler;
 
     @Autowired
     public ComandoControladorAlquiler(ManejadorCrearAlquiler manejadorCrearAlquiler,
-									  ManejadorEliminarAlquiler manejadorEliminarAlquiler,
-									  ManejadorActualizarAlquiler manejadorActualizarAlquiler) {
+                                      ManejadorEliminarAlquiler manejadorEliminarAlquiler,
+                                      ManejadorActualizarAlquiler manejadorActualizarAlquiler) {
         this.manejadorCrearAlquiler = manejadorCrearAlquiler;
-		this.manejadorEliminarAlquiler = manejadorEliminarAlquiler;
-		this.manejadorActualizarAlquiler = manejadorActualizarAlquiler;
+        this.manejadorEliminarAlquiler = manejadorEliminarAlquiler;
+        this.manejadorActualizarAlquiler = manejadorActualizarAlquiler;
     }
 
     @PostMapping
@@ -34,16 +34,16 @@ public class ComandoControladorAlquiler {
         return manejadorCrearAlquiler.ejecutar(comandoAlquiler);
     }
 
-    @DeleteMapping(value="/{id}")
-	@ApiOperation("Eliminar Alquiler")
-	public void eliminar(@PathVariable Long id) {
-		manejadorEliminarAlquiler.ejecutar(id);
-	}
+    @DeleteMapping(value = "/{id}")
+    @ApiOperation("Eliminar Alquiler")
+    public void eliminar(@PathVariable Long id) {
+        manejadorEliminarAlquiler.ejecutar(id);
+    }
 
-	@PutMapping(value="/{id}")
-	@ApiOperation("Actualizar Alquiler")
-	public void actualizar(@RequestBody ComandoAlquiler comandoAlquiler,@PathVariable Long id) {
-		comandoAlquiler.setId(id);
-		manejadorActualizarAlquiler.ejecutar(comandoAlquiler);
-	}
+    @PutMapping(value = "/{id}")
+    @ApiOperation("Actualizar Alquiler")
+    public void actualizar(@RequestBody ComandoAlquiler comandoAlquiler, @PathVariable Long id) {
+        comandoAlquiler.setId(id);
+        manejadorActualizarAlquiler.ejecutar(comandoAlquiler);
+    }
 }

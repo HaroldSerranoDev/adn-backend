@@ -140,7 +140,7 @@ public class ServicioCrearMotoTest {
         // arrange
         MotoTestDataBuilder motoTestDataBuilder = new MotoTestDataBuilder().conKilometrosRecorridos(null);
         // act - assert
-        BasePrueba.assertThrows(() -> motoTestDataBuilder.build(), ExcepcionValorObligatorio.class, DEBE_INGRESAR_UN_VALOR_PARA_LOS_KILOMETROS_RECORRIDOS );
+        BasePrueba.assertThrows(() -> motoTestDataBuilder.build(), ExcepcionValorObligatorio.class, DEBE_INGRESAR_UN_VALOR_PARA_LOS_KILOMETROS_RECORRIDOS);
     }
 
     @Test
@@ -156,7 +156,7 @@ public class ServicioCrearMotoTest {
         // arrange
         MotoTestDataBuilder motoTestDataBuilder = new MotoTestDataBuilder().conPrecioAlquiler(null);
         // act - assert
-        BasePrueba.assertThrows(() -> motoTestDataBuilder.build(), ExcepcionValorObligatorio.class, DEBE_INGRESAR_UN_VALOR_PARA_EL_PRECIO_DE_ALQUILER );
+        BasePrueba.assertThrows(() -> motoTestDataBuilder.build(), ExcepcionValorObligatorio.class, DEBE_INGRESAR_UN_VALOR_PARA_EL_PRECIO_DE_ALQUILER);
     }
 
     @Test

@@ -1,9 +1,9 @@
 package com.ceiba.alquiler.servicio;
 
 import com.ceiba.alquiler.excepcion.AlquilerException;
+import com.ceiba.alquiler.modelo.entidad.Alquiler;
 import com.ceiba.alquiler.puerto.repositorio.RepositorioAlquiler;
 import com.ceiba.cliente.puerto.repositorio.RepositorioCliente;
-import com.ceiba.alquiler.modelo.entidad.Alquiler;
 import com.ceiba.moto.puerto.dao.DaoMoto;
 import com.ceiba.moto.puerto.repositorio.RepositorioMoto;
 

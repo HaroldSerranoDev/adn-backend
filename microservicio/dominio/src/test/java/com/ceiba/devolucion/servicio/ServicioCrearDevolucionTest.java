@@ -31,7 +31,7 @@ public class ServicioCrearDevolucionTest {
     private RepositorioDevolucion repositorioDevolucion;
 
     @Mock
-    private  RepositorioMoto repositorioMoto;
+    private RepositorioMoto repositorioMoto;
 
     @Mock
     private DaoAlquiler daoAlquiler;

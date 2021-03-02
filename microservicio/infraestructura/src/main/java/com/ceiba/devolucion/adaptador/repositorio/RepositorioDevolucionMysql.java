@@ -12,10 +12,10 @@ public class RepositorioDevolucionMysql implements RepositorioDevolucion {
 
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
 
-    @SqlStatement(namespace="devolucion", value="crear")
+    @SqlStatement(namespace = "devolucion", value = "crear")
     private static String sqlCrear;
 
-    @SqlStatement(namespace="devolucion", value="existePorIdAlquiler")
+    @SqlStatement(namespace = "devolucion", value = "existePorIdAlquiler")
     private static String sqlExistePorIdAlquiler;
 
 
@@ -33,7 +33,7 @@ public class RepositorioDevolucionMysql implements RepositorioDevolucion {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("idAlquiler", id);
 
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorIdAlquiler,paramSource, Boolean.class);
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorIdAlquiler, paramSource, Boolean.class);
     }
 
 }

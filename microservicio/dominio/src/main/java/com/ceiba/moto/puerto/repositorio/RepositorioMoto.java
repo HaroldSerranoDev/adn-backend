@@ -6,6 +6,7 @@ import com.ceiba.moto.modelo.entidad.Moto;
 public interface RepositorioMoto {
     /**
      * Permite crear una moto
+     *
      * @param moto
      * @return el id generado
      */
@@ -13,6 +14,7 @@ public interface RepositorioMoto {
 
     /**
      * Permite actualizar una moto
+     *
      * @param moto
      */
     void actualizar(Moto moto);
@@ -20,12 +22,14 @@ public interface RepositorioMoto {
 
     /**
      * Permite eliminar una moto
+     *
      * @param id
      */
     void eliminar(Long id);
 
     /**
      * Permite validar si existe una moto con una matricula excluyendo el Id
+     *
      * @param matricula
      * @return si existe o no
      */
@@ -33,6 +37,7 @@ public interface RepositorioMoto {
 
     /**
      * Permite validar si existe una moto por un id
+     *
      * @param id
      * @return si existe o no
      */
@@ -40,6 +45,7 @@ public interface RepositorioMoto {
 
     /**
      * Permite actualizar los kilometros de la moto por Id
+     *
      * @param totalKilometros
      * @param idMoto
      * @return si existe o no

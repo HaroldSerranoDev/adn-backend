@@ -11,9 +11,11 @@ public class ManejadorListarAlquileres {
 
     private final DaoAlquiler daoAlquiler;
 
-    public ManejadorListarAlquileres(DaoAlquiler daoAlquiler){
+    public ManejadorListarAlquileres(DaoAlquiler daoAlquiler) {
         this.daoAlquiler = daoAlquiler;
     }
 
-    public List<DtoAlquiler> ejecutar(){ return this.daoAlquiler.listar(); }
+    public List<DtoAlquiler> ejecutar() {
+        return this.daoAlquiler.listar();
+    }
 }

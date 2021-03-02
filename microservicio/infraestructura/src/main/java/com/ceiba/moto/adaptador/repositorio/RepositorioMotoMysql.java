@@ -21,10 +21,10 @@ public class RepositorioMotoMysql implements RepositorioMoto {
     @SqlStatement(namespace = "moto", value = "eliminar")
     private static String sqlEliminar;
 
-    @SqlStatement(namespace="moto", value="existePorMatriculaExcluyendoId")
+    @SqlStatement(namespace = "moto", value = "existePorMatriculaExcluyendoId")
     private static String existePorMatriculaExcluyendoId;
 
-    @SqlStatement(namespace="moto", value="existePorId")
+    @SqlStatement(namespace = "moto", value = "existePorId")
     private static String sqlExistePorId;
 
     @SqlStatement(namespace = "moto", value = "actualizarKilometrosMotoPorId")
@@ -56,7 +56,7 @@ public class RepositorioMotoMysql implements RepositorioMoto {
         paramSource.addValue("matricula", matricula);
         paramSource.addValue("id", id);
 
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(existePorMatriculaExcluyendoId,paramSource, Boolean.class);
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(existePorMatriculaExcluyendoId, paramSource, Boolean.class);
     }
 
     @Override
@@ -64,7 +64,7 @@ public class RepositorioMotoMysql implements RepositorioMoto {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("id", id);
 
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorId,paramSource, Boolean.class);
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorId, paramSource, Boolean.class);
     }
 
 
@@ -94,7 +94,7 @@ public class RepositorioMotoMysql implements RepositorioMoto {
         paramSource.addValue("kilometrosFinales", totalKilometros);
         paramSource.addValue("idMoto", idMoto);
 
-        this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().update(sqlActualizarKilometrosMotoPorId,paramSource);
+        this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().update(sqlActualizarKilometrosMotoPorId, paramSource);
     }
 
 }

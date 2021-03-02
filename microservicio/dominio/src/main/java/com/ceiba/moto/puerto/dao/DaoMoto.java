@@ -8,12 +8,14 @@ public interface DaoMoto {
 
     /**
      * Permite listar motos
+     *
      * @return listado de motos
      */
     List<DtoMoto> listar();
 
     /**
      * Permite obtener el costo del alquiler de una moto por id
+     *
      * @return una moto
      */
     Double obtenerCostoAlquiler(Long id);

@@ -1,4 +1,4 @@
-select devolucion.id as id_devolucion,devolucion.fecha_devolucion,devolucion.km_finales,devolucion.alquiler_id, devolucion.valor_pago_final
+select devolucion.id as id_devolucion,devolucion.fecha_devolucion,devolucion.km_finales,devolucion.alquiler_id, devolucion.valor_pago_final,
 cliente.id as id_cliente, cliente.nombre, cliente.direccion, cliente.telefono, cliente.cedula, cliente.correo,
 moto.id as id_moto, moto.matricula, moto.marca, moto.modelo, moto.tipo_moto, moto.kilometros_recorridos, moto.precio_alquiler,
 alquiler.id as id_alquiler, fecha_alquiler, fecha_entrega, valor_pago

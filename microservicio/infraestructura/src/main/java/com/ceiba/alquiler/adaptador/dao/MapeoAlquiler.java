@@ -1,17 +1,14 @@
 package com.ceiba.alquiler.adaptador.dao;
 
-import com.ceiba.cliente.modelo.dto.DtoCliente;
-import com.ceiba.cliente.modelo.entidad.Cliente;
-import com.ceiba.infraestructura.jdbc.MapperResult;
 import com.ceiba.alquiler.modelo.dto.DtoAlquiler;
+import com.ceiba.cliente.modelo.dto.DtoCliente;
+import com.ceiba.infraestructura.jdbc.MapperResult;
 import com.ceiba.moto.modelo.dto.DtoMoto;
-import com.ceiba.moto.modelo.entidad.Moto;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 public class MapeoAlquiler implements RowMapper<DtoAlquiler>, MapperResult {
 
@@ -40,10 +37,10 @@ public class MapeoAlquiler implements RowMapper<DtoAlquiler>, MapperResult {
         int kilometrosRecorridos = resultSet.getInt("kilometros_recorridos");
         double precioAlquiler = resultSet.getDouble("precio_alquiler");
 
-        DtoCliente cliente = new DtoCliente(idCliente,nombre,direccion,telefono,cedula,correo);
-        DtoMoto moto= new DtoMoto(idMoto,matricula,marca,modelo,tipoMoto,kilometrosRecorridos,precioAlquiler);
+        DtoCliente cliente = new DtoCliente(idCliente, nombre, direccion, telefono, cedula, correo);
+        DtoMoto moto = new DtoMoto(idMoto, matricula, marca, modelo, tipoMoto, kilometrosRecorridos, precioAlquiler);
 
-        return new DtoAlquiler(id,fechaAlquiler,fechaEntrega, cliente, moto, valorPago);
+        return new DtoAlquiler(id, fechaAlquiler, fechaEntrega, cliente, moto, valorPago);
     }
 
 }

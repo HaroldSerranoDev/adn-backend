@@ -48,8 +48,8 @@ public class Moto {
         TipoMoto tipoMotoFinal = validarEnumValido(tipoMoto, TipoMoto.class, SE_DEBE_INGRESAR_UN_TIPO_DE_MOTO_VALIDO);
 
 
-        validarPositivo((double) modelo,SE_DEBE_INGRESAR_UN_MODELO_DE_MOTO_POSITIVO);
-        validarPositivo((double) kilometrosRecorridos,DEBE_INGRESAR_UN_VALOR_POSITIVO_PARA_LOS_KILOMETROS_RECORRIDOS);
+        validarPositivo((double) modelo, SE_DEBE_INGRESAR_UN_MODELO_DE_MOTO_POSITIVO);
+        validarPositivo((double) kilometrosRecorridos, DEBE_INGRESAR_UN_VALOR_POSITIVO_PARA_LOS_KILOMETROS_RECORRIDOS);
         validarPositivo(precioAlquiler, DEBE_INGRESAR_UN_VALOR_POSITIVO_PARA_EL_PRECIO_DE_ALQUILER);
 
 

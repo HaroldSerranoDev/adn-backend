@@ -11,9 +11,11 @@ public class ManejadorListarMotos {
 
     private final DaoMoto daoMoto;
 
-    public ManejadorListarMotos(DaoMoto daoMoto){
+    public ManejadorListarMotos(DaoMoto daoMoto) {
         this.daoMoto = daoMoto;
     }
 
-    public List<DtoMoto> ejecutar(){ return this.daoMoto.listar(); }
+    public List<DtoMoto> ejecutar() {
+        return this.daoMoto.listar();
+    }
 }

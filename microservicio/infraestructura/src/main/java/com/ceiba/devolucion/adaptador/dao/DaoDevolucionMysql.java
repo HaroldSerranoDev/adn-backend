@@ -13,26 +13,15 @@ public class DaoDevolucionMysql implements DaoDevolucion {
 
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
 
-    @SqlStatement(namespace="devolucion", value="listar")
+    @SqlStatement(namespace = "devolucion", value = "listar")
     private static String sqlListar;
 
     public DaoDevolucionMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
     }
 
-
     @Override
     public List<DtoDevolucion> listar() {
-        return null;
-    }
-
-    @Override
-    public DtoDevolucion buscarPorIdAlquiler(Long idAlquiler) {
-        return null;
-    }
-
-    @Override
-    public DtoDevolucion buscarPorId(Long id) {
-        return null;
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().query(sqlListar, new MapeoDevolucion());
     }
 }

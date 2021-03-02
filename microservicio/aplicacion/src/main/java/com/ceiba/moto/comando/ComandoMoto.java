@@ -1,7 +1,5 @@
 package com.ceiba.moto.comando;
 
-import com.ceiba.moto.modelo.entidad.Marca;
-import com.ceiba.moto.modelo.entidad.TipoMoto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

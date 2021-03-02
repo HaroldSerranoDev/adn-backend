@@ -3,8 +3,8 @@ package com.ceiba.alquiler.servicio.testdatabuilder;
 import com.ceiba.alquiler.modelo.entidad.Alquiler;
 
 public class AlquilerTestDataBuilder {
-    private static final String  FECHA_ALQUILER ="2021-03-03";
-    private static final String  FECHA_ENTREGA ="2021-03-08";
+    private static final String FECHA_ALQUILER = "2021-03-03";
+    private static final String FECHA_ENTREGA = "2021-03-08";
 
     private Long id;
     private String fechaAlquiler;
@@ -46,6 +46,6 @@ public class AlquilerTestDataBuilder {
     }
 
     public Alquiler build() {
-        return new Alquiler(id, fechaAlquiler,fechaEntrega,idCliente,idMoto);
+        return new Alquiler(id, fechaAlquiler, fechaEntrega, idCliente, idMoto);
     }
 }

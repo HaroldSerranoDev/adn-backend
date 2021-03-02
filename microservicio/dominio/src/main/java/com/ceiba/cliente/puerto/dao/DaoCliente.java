@@ -8,6 +8,7 @@ public interface DaoCliente {
 
     /**
      * Permite listar clientes
+     *
      * @return listado de clientes
      */
     List<DtoCliente> listar();

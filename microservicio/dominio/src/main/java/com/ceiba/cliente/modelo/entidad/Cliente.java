@@ -30,22 +30,22 @@ public class Cliente {
 
     public Cliente(Long id, String nombre, String direccion, String telefono, String cedula, String correo) {
 
-        validarObligatorio(nombre,SE_DEBE_INGRESAR_EL_NOMBRE_DEL_CLIENTE);
-        validarObligatorio(direccion,SE_DEBE_INGRESAR_LA_DIRECCION_DEL_CLIENTE);
-        validarObligatorio(telefono,SE_DEBE_INGRESAR_EL_TELEFONO_DEL_CLIENTE);
-        validarObligatorio(cedula,SE_DEBE_INGRESAR_LA_CEDULA_DEL_CLIENTE);
+        validarObligatorio(nombre, SE_DEBE_INGRESAR_EL_NOMBRE_DEL_CLIENTE);
+        validarObligatorio(direccion, SE_DEBE_INGRESAR_LA_DIRECCION_DEL_CLIENTE);
+        validarObligatorio(telefono, SE_DEBE_INGRESAR_EL_TELEFONO_DEL_CLIENTE);
+        validarObligatorio(cedula, SE_DEBE_INGRESAR_LA_CEDULA_DEL_CLIENTE);
         validarObligatorio(correo, SE_DEBE_INGRESAR_EL_CORREO_DEL_CLIENTE);
 
-        validarLongitud(nombre, LONGITUD_MINIMA_DE_DATOS,SE_DEBE_INGRESAR_EL_NOMBRE_DEL_CLIENTE);
-        validarLongitud(direccion, LONGITUD_MINIMA_DE_DATOS,SE_DEBE_INGRESAR_LA_DIRECCION_DEL_CLIENTE);
-        validarLongitud(telefono, LONGITUD_MINIMA_DE_DATOS,SE_DEBE_INGRESAR_EL_TELEFONO_DEL_CLIENTE);
-        validarLongitud(cedula, LONGITUD_MINIMA_DE_DATOS,SE_DEBE_INGRESAR_LA_CEDULA_DEL_CLIENTE);
+        validarLongitud(nombre, LONGITUD_MINIMA_DE_DATOS, SE_DEBE_INGRESAR_EL_NOMBRE_DEL_CLIENTE);
+        validarLongitud(direccion, LONGITUD_MINIMA_DE_DATOS, SE_DEBE_INGRESAR_LA_DIRECCION_DEL_CLIENTE);
+        validarLongitud(telefono, LONGITUD_MINIMA_DE_DATOS, SE_DEBE_INGRESAR_EL_TELEFONO_DEL_CLIENTE);
+        validarLongitud(cedula, LONGITUD_MINIMA_DE_DATOS, SE_DEBE_INGRESAR_LA_CEDULA_DEL_CLIENTE);
         validarLongitud(correo, LONGITUD_MINIMA_DE_DATOS, SE_DEBE_INGRESAR_EL_CORREO_DEL_CLIENTE);
 
-        validarNumerico(cedula,DEBE_INGRESAR_UN_VALOR_NUMERICO_PARA_LA_CEDULA );
-        validarNumerico(telefono,DEBE_INGRESAR_UN_VALOR_NUMERICO_PARA_EL_TELEFONO );
+        validarNumerico(cedula, DEBE_INGRESAR_UN_VALOR_NUMERICO_PARA_LA_CEDULA);
+        validarNumerico(telefono, DEBE_INGRESAR_UN_VALOR_NUMERICO_PARA_EL_TELEFONO);
 
-        validarRegex(correo, REGEX_CORREO,DEBE_INGRESAR_UN_FORMATO_DE_CORREO_VALIDO);
+        validarRegex(correo, REGEX_CORREO, DEBE_INGRESAR_UN_FORMATO_DE_CORREO_VALIDO);
 
         this.id = id;
         this.nombre = nombre;

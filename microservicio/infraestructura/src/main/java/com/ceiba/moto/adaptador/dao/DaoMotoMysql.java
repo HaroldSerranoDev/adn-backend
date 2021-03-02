@@ -14,10 +14,10 @@ public class DaoMotoMysql implements DaoMoto {
 
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
 
-    @SqlStatement(namespace="moto", value="listar")
+    @SqlStatement(namespace = "moto", value = "listar")
     private static String sqlListar;
 
-    @SqlStatement(namespace="moto", value="obtenerCostoAlquilerPorId")
+    @SqlStatement(namespace = "moto", value = "obtenerCostoAlquilerPorId")
     private static String sqlObtenerCostoAlquilerMotoPorId;
 
     public DaoMotoMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {

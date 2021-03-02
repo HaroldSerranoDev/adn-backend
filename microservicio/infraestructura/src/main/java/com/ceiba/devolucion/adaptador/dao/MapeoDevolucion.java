@@ -16,14 +16,7 @@ public class MapeoDevolucion implements RowMapper<DtoDevolucion>, MapperResult {
     @Override
     public DtoDevolucion mapRow(ResultSet resultSet, int rowNum) throws SQLException {
 
-        //DtoDevolucion
-        Long id = resultSet.getLong("id_devolucion");
-        LocalDate fechaDevolucion = extraerLocalDate(resultSet, "fecha_devolucion");
-        int kilometrosFinales = resultSet.getInt("km_finales");
-        double valorPagoFinal = resultSet.getDouble("valor_pago_final");
 
-
-        //DtoCliente
         Long idCliente = resultSet.getLong("id_cliente");
         String nombre = resultSet.getString("nombre");
         String direccion = resultSet.getString("direccion");
@@ -31,7 +24,6 @@ public class MapeoDevolucion implements RowMapper<DtoDevolucion>, MapperResult {
         String cedula = resultSet.getString("cedula");
         String correo = resultSet.getString("correo");
 
-        //DtoMoto
         Long idMoto = resultSet.getLong("id_moto");
         String matricula = resultSet.getString("matricula");
         String marca = resultSet.getString("marca");
@@ -41,17 +33,21 @@ public class MapeoDevolucion implements RowMapper<DtoDevolucion>, MapperResult {
         double precioAlquiler = resultSet.getDouble("precio_alquiler");
 
 
-        //DtoAlquiler
         Long idAlquiler = resultSet.getLong("id_alquiler");
-        LocalDate fechaAlquiler = extraerLocalDate(resultSet,"fecha_alquiler");
-        LocalDate fechaEntrega = extraerLocalDate(resultSet,"fecha_entrega");
+        LocalDate fechaAlquiler = extraerLocalDate(resultSet, "fecha_alquiler");
+        LocalDate fechaEntrega = extraerLocalDate(resultSet, "fecha_entrega");
         double valorPago = resultSet.getDouble("valor_pago");
 
-        DtoCliente cliente = new DtoCliente(idCliente,nombre,direccion,telefono,cedula,correo);
-        DtoMoto moto= new DtoMoto(idMoto,matricula,marca,modelo,tipoMoto,kilometrosRecorridos,precioAlquiler);
-        DtoAlquiler alquiler = new DtoAlquiler(idAlquiler,fechaAlquiler,fechaEntrega,cliente,moto,valorPago);
+        Long id = resultSet.getLong("id_devolucion");
+        LocalDate fechaDevolucion = extraerLocalDate(resultSet, "fecha_devolucion");
+        int kilometrosFinales = resultSet.getInt("km_finales");
+        double valorPagoFinal = resultSet.getDouble("valor_pago_final");
 
-        return new DtoDevolucion(id,fechaDevolucion, kilometrosFinales,alquiler,valorPagoFinal);
+        DtoCliente cliente = new DtoCliente(idCliente, nombre, direccion, telefono, cedula, correo);
+        DtoMoto moto = new DtoMoto(idMoto, matricula, marca, modelo, tipoMoto, kilometrosRecorridos, precioAlquiler);
+        DtoAlquiler alquiler = new DtoAlquiler(idAlquiler, fechaAlquiler, fechaEntrega, cliente, moto, valorPago);
+
+        return new DtoDevolucion(id, fechaDevolucion, kilometrosFinales, alquiler, valorPagoFinal);
     }
 
 }

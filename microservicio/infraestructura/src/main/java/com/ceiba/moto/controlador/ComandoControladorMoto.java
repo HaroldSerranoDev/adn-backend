@@ -11,21 +11,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/motoes")
-@Api(tags = { "Controlador comando moto"})
+@RequestMapping("/motos")
+@Api(tags = {"Controlador comando moto"})
 public class ComandoControladorMoto {
 
     private final ManejadorCrearMoto manejadorCrearMoto;
-	private final ManejadorEliminarMoto manejadorEliminarMoto;
-	private final ManejadorActualizarMoto manejadorActualizarMoto;
+    private final ManejadorEliminarMoto manejadorEliminarMoto;
+    private final ManejadorActualizarMoto manejadorActualizarMoto;
 
     @Autowired
     public ComandoControladorMoto(ManejadorCrearMoto manejadorCrearMoto,
                                   ManejadorEliminarMoto manejadorEliminarMoto,
                                   ManejadorActualizarMoto manejadorActualizarMoto) {
         this.manejadorCrearMoto = manejadorCrearMoto;
-		this.manejadorEliminarMoto = manejadorEliminarMoto;
-		this.manejadorActualizarMoto = manejadorActualizarMoto;
+        this.manejadorEliminarMoto = manejadorEliminarMoto;
+        this.manejadorActualizarMoto = manejadorActualizarMoto;
     }
 
     @PostMapping
@@ -34,16 +34,16 @@ public class ComandoControladorMoto {
         return manejadorCrearMoto.ejecutar(comandoMoto);
     }
 
-    @DeleteMapping(value="/{id}")
-	@ApiOperation("Eliminar Moto")
-	public void eliminar(@PathVariable Long id) {
-		manejadorEliminarMoto.ejecutar(id);
-	}
+    @DeleteMapping(value = "/{id}")
+    @ApiOperation("Eliminar Moto")
+    public void eliminar(@PathVariable Long id) {
+        manejadorEliminarMoto.ejecutar(id);
+    }
 
-	@PutMapping(value="/{id}")
-	@ApiOperation("Actualizar Moto")
-	public void actualizar(@RequestBody ComandoMoto comandoMoto,@PathVariable Long id) {
-		comandoMoto.setId(id);
-		manejadorActualizarMoto.ejecutar(comandoMoto);
-	}
+    @PutMapping(value = "/{id}")
+    @ApiOperation("Actualizar Moto")
+    public void actualizar(@RequestBody ComandoMoto comandoMoto, @PathVariable Long id) {
+        comandoMoto.setId(id);
+        manejadorActualizarMoto.ejecutar(comandoMoto);
+    }
 }

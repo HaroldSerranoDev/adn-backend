@@ -1,9 +1,9 @@
 package com.ceiba.alquiler.adaptador.repositorio;
 
-import com.ceiba.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
-import com.ceiba.infraestructura.jdbc.sqlstatement.SqlStatement;
 import com.ceiba.alquiler.modelo.entidad.Alquiler;
 import com.ceiba.alquiler.puerto.repositorio.RepositorioAlquiler;
+import com.ceiba.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
+import com.ceiba.infraestructura.jdbc.sqlstatement.SqlStatement;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Repository;
 
@@ -17,19 +17,19 @@ public class RepositorioAlquilerMysql implements RepositorioAlquiler {
 
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
 
-    @SqlStatement(namespace="alquiler", value="crear")
+    @SqlStatement(namespace = "alquiler", value = "crear")
     private static String sqlCrear;
 
-    @SqlStatement(namespace="alquiler", value="actualizar")
+    @SqlStatement(namespace = "alquiler", value = "actualizar")
     private static String sqlActualizar;
 
-    @SqlStatement(namespace="alquiler", value="eliminar")
+    @SqlStatement(namespace = "alquiler", value = "eliminar")
     private static String sqlEliminar;
 
-    @SqlStatement(namespace="alquiler", value="existePorId")
+    @SqlStatement(namespace = "alquiler", value = "existePorId")
     private static String sqlExistePorId;
 
-    @SqlStatement(namespace="alquiler", value="existeAlquilerPorFechasIdMoto")
+    @SqlStatement(namespace = "alquiler", value = "existeAlquilerPorFechasIdMoto")
     private static String sqlExistePorFechasIdMoto;
 
 
@@ -55,7 +55,7 @@ public class RepositorioAlquilerMysql implements RepositorioAlquiler {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("id", id);
 
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorId,paramSource, Boolean.class);
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorId, paramSource, Boolean.class);
     }
 
     @Override
@@ -68,7 +68,7 @@ public class RepositorioAlquilerMysql implements RepositorioAlquiler {
         paramSource.addValue("fechaAlquiler", fechaAlquilerFinal);
         paramSource.addValue("idMoto", idMoto);
 
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorFechasIdMoto,paramSource, Boolean.class);
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorFechasIdMoto, paramSource, Boolean.class);
     }
 
 

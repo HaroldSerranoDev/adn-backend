@@ -103,7 +103,7 @@ public class ServicioCrearAlquilerTest {
                 build();
 
         // act - assert
-        BasePrueba.assertThrows(() -> servicioCrearAlquiler.validarNumeroDiasAlquiler(alquiler.getFechaAlquiler(),alquiler.getFechaEntrega()), AlquilerException.class, LIMITE_DE_DIAS_ALQUILER_SUPERADO);
+        BasePrueba.assertThrows(() -> servicioCrearAlquiler.validarNumeroDiasAlquiler(alquiler.getFechaAlquiler(), alquiler.getFechaEntrega()), AlquilerException.class, LIMITE_DE_DIAS_ALQUILER_SUPERADO);
     }
 
     @Test
@@ -125,10 +125,10 @@ public class ServicioCrearAlquilerTest {
         Alquiler alquiler = new AlquilerTestDataBuilder().build();
 
         // act
-        boolean hayFinesDeSemana = servicioCrearAlquiler.validarExistenciaFinesSemanaAlquiler(alquiler.getFechaAlquiler(),alquiler.getFechaEntrega());
+        boolean hayFinesDeSemana = servicioCrearAlquiler.validarExistenciaFinesSemanaAlquiler(alquiler.getFechaAlquiler(), alquiler.getFechaEntrega());
 
         // assert
-        BasePrueba.assertEqualsObject(hayFinesDeSemana,true);
+        BasePrueba.assertEqualsObject(hayFinesDeSemana, true);
     }
 
     @Test
@@ -140,10 +140,10 @@ public class ServicioCrearAlquilerTest {
                 build();
 
         // act
-        boolean hayFinesDeSemana = servicioCrearAlquiler.validarExistenciaFinesSemanaAlquiler(alquiler.getFechaAlquiler(),alquiler.getFechaEntrega());
+        boolean hayFinesDeSemana = servicioCrearAlquiler.validarExistenciaFinesSemanaAlquiler(alquiler.getFechaAlquiler(), alquiler.getFechaEntrega());
 
         // assert
-        BasePrueba.assertEqualsObject(hayFinesDeSemana,false);
+        BasePrueba.assertEqualsObject(hayFinesDeSemana, false);
     }
 
 

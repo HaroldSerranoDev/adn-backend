@@ -11,9 +11,11 @@ public class ManejadorListarClientes {
 
     private final DaoCliente daoCliente;
 
-    public ManejadorListarClientes(DaoCliente daoCliente){
+    public ManejadorListarClientes(DaoCliente daoCliente) {
         this.daoCliente = daoCliente;
     }
 
-    public List<DtoCliente> ejecutar(){ return this.daoCliente.listar(); }
+    public List<DtoCliente> ejecutar() {
+        return this.daoCliente.listar();
+    }
 }

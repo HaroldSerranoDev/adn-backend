@@ -19,7 +19,7 @@ public class MapeoCliente implements RowMapper<DtoCliente>, MapperResult {
         String cedula = resultSet.getString("cedula");
         String correo = resultSet.getString("correo");
 
-        return new DtoCliente(id,nombre,direccion, telefono, cedula, correo);
+        return new DtoCliente(id, nombre, direccion, telefono, cedula, correo);
     }
 
 }

@@ -42,7 +42,7 @@ public class ServicioCrearDevolucion {
 
         if (diferenciaKilomentros > LIMITE_DE_KILOMETROS_RECORRIDOS) {
             costoAlquilerFinal = (dtoAlquiler.getValorPago() * AUMENTO_COSTO_ALQUILER) + dtoAlquiler.getValorPago();
-        }else{
+        } else {
             costoAlquilerFinal = dtoAlquiler.getValorPago();
         }
 

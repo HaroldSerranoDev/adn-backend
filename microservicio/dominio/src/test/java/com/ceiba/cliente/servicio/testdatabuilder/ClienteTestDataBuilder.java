@@ -52,6 +52,6 @@ public class ClienteTestDataBuilder {
 
 
     public Cliente build() {
-        return new Cliente(id, nombre,direccion,telefono,cedula,correo);
+        return new Cliente(id, nombre, direccion, telefono, cedula, correo);
     }
 }

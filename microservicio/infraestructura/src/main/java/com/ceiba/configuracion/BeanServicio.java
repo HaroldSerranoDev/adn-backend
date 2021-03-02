@@ -16,41 +16,21 @@ import com.ceiba.moto.puerto.repositorio.RepositorioMoto;
 import com.ceiba.moto.servicio.ServicioActualizarMoto;
 import com.ceiba.moto.servicio.ServicioCrearMoto;
 import com.ceiba.moto.servicio.ServicioEliminarMoto;
-import com.ceiba.usuario.puerto.repositorio.RepositorioUsuario;
-import com.ceiba.usuario.servicio.ServicioActualizarUsuario;
-import com.ceiba.usuario.servicio.ServicioCrearUsuario;
-import com.ceiba.usuario.servicio.ServicioEliminarUsuario;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class BeanServicio {
 
-    @Bean
-    public ServicioCrearUsuario servicioCrearUsuario(RepositorioUsuario repositorioUsuario) {
-        return new ServicioCrearUsuario(repositorioUsuario);
-    }
-
-    @Bean
-    public ServicioEliminarUsuario servicioEliminarUsuario(RepositorioUsuario repositorioUsuario) {
-        return new ServicioEliminarUsuario(repositorioUsuario);
-    }
-
-    @Bean
-    public ServicioActualizarUsuario servicioActualizarUsuario(RepositorioUsuario repositorioUsuario) {
-        return new ServicioActualizarUsuario(repositorioUsuario);
-    }
-
-
     //
     @Bean
     public ServicioCrearAlquiler servicioCrearAlquiler(RepositorioAlquiler repositorioAlquiler, RepositorioCliente repositorioCliente, RepositorioMoto repositorioMoto, DaoMoto daoMoto) {
-        return new ServicioCrearAlquiler(repositorioAlquiler,repositorioCliente,repositorioMoto,daoMoto);
+        return new ServicioCrearAlquiler(repositorioAlquiler, repositorioCliente, repositorioMoto, daoMoto);
     }
 
     @Bean
     public ServicioActualizarAlquiler servicioActualizarAlquiler(RepositorioAlquiler repositorioAlquiler, RepositorioCliente repositorioCliente, RepositorioMoto repositorioMoto, DaoMoto daoMoto) {
-        return new ServicioActualizarAlquiler(repositorioAlquiler,repositorioCliente,repositorioMoto,daoMoto);
+        return new ServicioActualizarAlquiler(repositorioAlquiler, repositorioCliente, repositorioMoto, daoMoto);
     }
 
     @Bean
@@ -78,7 +58,7 @@ public class BeanServicio {
     //
     @Bean
     public ServicioCrearDevolucion servicioCrearDevolucion(RepositorioDevolucion repositorioDevolucion, RepositorioAlquiler repositorioAlquiler, RepositorioMoto repositorioMoto, DaoAlquiler daoAlquiler) {
-        return new ServicioCrearDevolucion(repositorioDevolucion,repositorioAlquiler, repositorioMoto, daoAlquiler);
+        return new ServicioCrearDevolucion(repositorioDevolucion, repositorioAlquiler, repositorioMoto, daoAlquiler);
     }
 
     //

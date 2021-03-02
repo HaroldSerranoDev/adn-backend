@@ -1,7 +1,6 @@
 package com.ceiba.cliente.servicio;
 
 import com.ceiba.cliente.excepcion.ClienteException;
-import com.ceiba.cliente.modelo.entidad.Cliente;
 import com.ceiba.cliente.puerto.repositorio.RepositorioCliente;
 
 public class ServicioEliminarCliente {

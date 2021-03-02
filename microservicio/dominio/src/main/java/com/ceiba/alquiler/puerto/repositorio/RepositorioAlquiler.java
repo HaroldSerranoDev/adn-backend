@@ -8,6 +8,7 @@ import java.time.LocalDate;
 public interface RepositorioAlquiler {
     /**
      * Permite crear un alquiler
+     *
      * @param alquiler
      * @return el id generado
      */
@@ -15,18 +16,21 @@ public interface RepositorioAlquiler {
 
     /**
      * Permite actualizar un alquiler
+     *
      * @param alquiler
      */
     void actualizar(Alquiler alquiler);
 
     /**
      * Permite eliminar un alquiler
+     *
      * @param id
      */
     void eliminar(Long id);
 
     /**
      * Permite validar si existe un alquiler por id
+     *
      * @param id
      * @return si existe o no
      */
@@ -35,9 +39,10 @@ public interface RepositorioAlquiler {
 
     /**
      * Permite validar si existe un alquiler para una moto por fechaAlquiler
+     *
      * @param fechaAlquiler
      * @param idMoto
      * @return si existe o no
      */
-    boolean existeAlquilerPorFechasParaMoto(LocalDate fechaAlquiler,  Long idMoto);
+    boolean existeAlquilerPorFechasParaMoto(LocalDate fechaAlquiler, Long idMoto);
 }

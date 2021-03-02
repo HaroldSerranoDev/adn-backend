@@ -43,9 +43,9 @@ public class ServicioCrearAlquiler {
         validarExistenciaPreviaCliente(alquiler.getIdCliente());
         validarExistenciaMoto(alquiler.getIdMoto());
         validarExistenciaAlquilerActualDeMoto(alquiler.getFechaEntrega(), alquiler.getIdMoto());
-        validarNumeroDiasAlquiler(alquiler.getFechaAlquiler(),alquiler.getFechaEntrega());
+        validarNumeroDiasAlquiler(alquiler.getFechaAlquiler(), alquiler.getFechaEntrega());
 
-        if(validarExistenciaFinesSemanaAlquiler(alquiler.getFechaAlquiler(),alquiler.getFechaEntrega())){
+        if (validarExistenciaFinesSemanaAlquiler(alquiler.getFechaAlquiler(), alquiler.getFechaEntrega())) {
             Double costoAlquilerMoto = daoMoto.obtenerCostoAlquiler(alquiler.getIdMoto());
             double valorPago = (costoAlquilerMoto * AUMENTO_COSTO_ALQUILER) + costoAlquilerMoto;
             alquiler.setValorPago(valorPago);

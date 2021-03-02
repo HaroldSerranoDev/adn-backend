@@ -11,9 +11,11 @@ public class ManejadorListarDevoluciones {
 
     private final DaoDevolucion daoDevolucion;
 
-    public ManejadorListarDevoluciones(DaoDevolucion daoDevolucion){
+    public ManejadorListarDevoluciones(DaoDevolucion daoDevolucion) {
         this.daoDevolucion = daoDevolucion;
     }
 
-    public List<DtoDevolucion> ejecutar(){ return this.daoDevolucion.listar(); }
+    public List<DtoDevolucion> ejecutar() {
+        return this.daoDevolucion.listar();
+    }
 }

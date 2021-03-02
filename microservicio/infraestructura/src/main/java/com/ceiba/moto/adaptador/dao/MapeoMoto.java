@@ -14,13 +14,13 @@ public class MapeoMoto implements RowMapper<DtoMoto>, MapperResult {
 
         Long id = resultSet.getLong("id");
         String matricula = resultSet.getString("matricula");
-        String marca= resultSet.getString("marca");
-        int modelo= resultSet.getInt("modelo");
+        String marca = resultSet.getString("marca");
+        int modelo = resultSet.getInt("modelo");
         String tipoMoto = resultSet.getString("tipo_moto");
         int kilometrosRecorridos = resultSet.getInt("kilometros_recorridos");
         double precioAlquiler = resultSet.getDouble("precio_alquiler");
 
-        return new DtoMoto(id,matricula,marca,modelo,tipoMoto,kilometrosRecorridos,precioAlquiler);
+        return new DtoMoto(id, matricula, marca, modelo, tipoMoto, kilometrosRecorridos, precioAlquiler);
     }
 
 }

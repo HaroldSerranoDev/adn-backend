@@ -1,21 +1,21 @@
 jasypt:
-   encryptor:
-      password: ${jasyptpwd:mi-adn-secreto}
-      algorithm: PBEWithMD5AndDES
+  encryptor:
+    password: ${jasyptpwd:mi-adn-secreto}
+    algorithm: PBEWithMD5AndDES
 
 server:
-   port: 8084
-   servlet:
-      context-path: /alquiler-motos
-      session:
-         timeout: 21600s
+  port: 8084
+  servlet:
+    context-path: /alquiler-motos
+    session:
+      timeout: 21600s
 
 spring:
-   datasource:
-      driver-class-name: com.mysql.jdbc.Driver
-      type: com.zaxxer.hikari.HikariDataSource
-      jdbcUrl: jdbc:mysql://localhost:3306/alquiler-motos?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
-      username: adn
-      password: ENC(NeBzn0lkscD59IhfSdBmuw==)
-      hikari:
-         poolName: pool
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    jdbcUrl: jdbc:mysql://localhost:3306/alquiler-motos?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: adn
+    password: ENC(NeBzn0lkscD59IhfSdBmuw==)
+    hikari:
+      poolName: pool

@@ -14,10 +14,10 @@ public class DaoAlquilerMysql implements DaoAlquiler {
 
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
 
-    @SqlStatement(namespace="alquiler", value="listar")
+    @SqlStatement(namespace = "alquiler", value = "listar")
     private static String sqlListar;
 
-    @SqlStatement(namespace="alquiler", value="obtenerPorId")
+    @SqlStatement(namespace = "alquiler", value = "obtenerPorId")
     private static String sqlObtenerPorId;
 
     public DaoAlquilerMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
@@ -34,7 +34,7 @@ public class DaoAlquilerMysql implements DaoAlquiler {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("idAlquiler", id);
 
-        return (DtoAlquiler) this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlObtenerPorId, paramSource,new MapeoAlquiler());
+        return (DtoAlquiler) this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlObtenerPorId, paramSource, new MapeoAlquiler());
     }
 
 }

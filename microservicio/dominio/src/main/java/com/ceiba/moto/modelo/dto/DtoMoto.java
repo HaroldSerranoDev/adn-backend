@@ -1,7 +1,5 @@
 package com.ceiba.moto.modelo.dto;
 
-import com.ceiba.moto.modelo.entidad.Marca;
-import com.ceiba.moto.modelo.entidad.TipoMoto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

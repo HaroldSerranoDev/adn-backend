@@ -20,7 +20,8 @@ import java.time.format.DateTimeFormatter;
 
 public class ServicioActualizarAlquilerTest {
 
-    private static final String EL_ALQUILER_QUE_INTENTA_ACTUALIZAR_NO_EXISTE_EN_EL_SISTEMA = "El alquiler que intenta actualizar no existe en el sistema";private static final String EL_CLIENTE_QUE_INTENTA_REALIZAR_EL_ALQUILER_NO_EXISTE_EN_EL_SISTEMA = "El cliente que realizar el alquiler no existe en el sistema";
+    private static final String EL_ALQUILER_QUE_INTENTA_ACTUALIZAR_NO_EXISTE_EN_EL_SISTEMA = "El alquiler que intenta actualizar no existe en el sistema";
+    private static final String EL_CLIENTE_QUE_INTENTA_REALIZAR_EL_ALQUILER_NO_EXISTE_EN_EL_SISTEMA = "El cliente que realizar el alquiler no existe en el sistema";
     private static final String LA_MOTO_QUE_INTENTA_ALQUILAR_NO_EXISTE_EN_EL_SISTEMA = "La moto que intenta alquilar no existe en el sistema";
     private static final String LA_MOTO_QUE_INTENTA_ALQUILAR_SE_ENCUENTRA_OCUPADA = "La moto que intenta alquilar se encuentra ocupada.";
     private static final String LIMITE_DE_DIAS_ALQUILER_SUPERADO = "Limite de dias de alquiler superado.";
@@ -96,7 +97,7 @@ public class ServicioActualizarAlquilerTest {
                 build();
 
         // act - assert
-        BasePrueba.assertThrows(() -> servicioActualizarAlquiler.validarNumeroDiasAlquiler(alquiler.getFechaAlquiler(),alquiler.getFechaEntrega()), AlquilerException.class, LIMITE_DE_DIAS_ALQUILER_SUPERADO);
+        BasePrueba.assertThrows(() -> servicioActualizarAlquiler.validarNumeroDiasAlquiler(alquiler.getFechaAlquiler(), alquiler.getFechaEntrega()), AlquilerException.class, LIMITE_DE_DIAS_ALQUILER_SUPERADO);
     }
 
     @Test
@@ -118,10 +119,10 @@ public class ServicioActualizarAlquilerTest {
         Alquiler alquiler = new AlquilerTestDataBuilder().build();
 
         // act
-        boolean hayFinesDeSemana = servicioActualizarAlquiler.validarExistenciaFinesSemanaAlquiler(alquiler.getFechaAlquiler(),alquiler.getFechaEntrega());
+        boolean hayFinesDeSemana = servicioActualizarAlquiler.validarExistenciaFinesSemanaAlquiler(alquiler.getFechaAlquiler(), alquiler.getFechaEntrega());
 
         // assert
-        BasePrueba.assertEqualsObject(hayFinesDeSemana,true);
+        BasePrueba.assertEqualsObject(hayFinesDeSemana, true);
     }
 
     @Test
@@ -133,10 +134,10 @@ public class ServicioActualizarAlquilerTest {
                 build();
 
         // act
-        boolean hayFinesDeSemana = servicioActualizarAlquiler.validarExistenciaFinesSemanaAlquiler(alquiler.getFechaAlquiler(),alquiler.getFechaEntrega());
+        boolean hayFinesDeSemana = servicioActualizarAlquiler.validarExistenciaFinesSemanaAlquiler(alquiler.getFechaAlquiler(), alquiler.getFechaEntrega());
 
         // assert
-        BasePrueba.assertEqualsObject(hayFinesDeSemana,false);
+        BasePrueba.assertEqualsObject(hayFinesDeSemana, false);
     }
 
     @Test

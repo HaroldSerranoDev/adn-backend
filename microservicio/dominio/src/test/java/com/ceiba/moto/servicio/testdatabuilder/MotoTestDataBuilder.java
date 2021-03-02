@@ -1,8 +1,6 @@
 package com.ceiba.moto.servicio.testdatabuilder;
 
-import com.ceiba.moto.modelo.entidad.Marca;
 import com.ceiba.moto.modelo.entidad.Moto;
-import com.ceiba.moto.modelo.entidad.TipoMoto;
 
 public class MotoTestDataBuilder {
 
@@ -61,6 +59,6 @@ public class MotoTestDataBuilder {
 
 
     public Moto build() {
-        return new Moto(id,matricula,marca,modelo,tipoMoto,kilometrosRecorridos,precioAlquiler);
+        return new Moto(id, matricula, marca, modelo, tipoMoto, kilometrosRecorridos, precioAlquiler);
     }
 }

@@ -1,7 +1,6 @@
 package com.ceiba.alquiler.modelo.entidad;
 
 
-import com.ceiba.dominio.ValidadorArgumento;
 import lombok.Getter;
 
 import java.time.LocalDate;

@@ -2,10 +2,8 @@ package com.ceiba.devolucion.servicio.testdatabuilder;
 
 import com.ceiba.devolucion.modelo.entidad.Devolucion;
 
-import java.time.LocalDate;
-
 public class DevolucionTestDataBuilder {
-    private static final String  FECHA_DEVOLUCION ="2021-03-03";
+    private static final String FECHA_DEVOLUCION = "2021-03-03";
 
     private Long id;
     private Integer kilometrosFinales;

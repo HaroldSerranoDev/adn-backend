@@ -27,7 +27,7 @@ public class Devolucion {
 
         this.id = id;
         this.fechaDevolucion = LocalDate.now();
-        this.valorPagoFinal=0;
+        this.valorPagoFinal = 0;
         this.kilometrosFinales = kilometrosFinales;
         this.idAlquiler = idAlquiler;
     }
