@@ -7,8 +7,13 @@ import com.ceiba.alquiler.puerto.repositorio.RepositorioAlquiler;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 @Repository
 public class RepositorioAlquilerMysql implements RepositorioAlquiler {
+
+    private static final String FORMATO_FECHA = "yyyy-MM-dd";
 
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
 
@@ -20,6 +25,12 @@ public class RepositorioAlquilerMysql implements RepositorioAlquiler {
 
     @SqlStatement(namespace="alquiler", value="eliminar")
     private static String sqlEliminar;
+
+    @SqlStatement(namespace="alquiler", value="existePorId")
+    private static String sqlExistePorId;
+
+    @SqlStatement(namespace="alquiler", value="existeAlquilerPorFechasIdMoto")
+    private static String sqlExistePorFechasIdMoto;
 
 
     public RepositorioAlquilerMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
@@ -41,7 +52,23 @@ public class RepositorioAlquilerMysql implements RepositorioAlquiler {
 
     @Override
     public boolean existePorId(Long id) {
-        return false;
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("id", id);
+
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorId,paramSource, Boolean.class);
+    }
+
+    @Override
+    public boolean existeAlquilerPorFechasParaMoto(LocalDate fechaAlquiler, Long idMoto) {
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(FORMATO_FECHA);
+        String fechaAlquilerFinal = fechaAlquiler.format(formatter);
+
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("fechaAlquiler", fechaAlquilerFinal);
+        paramSource.addValue("idMoto", idMoto);
+
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorFechasIdMoto,paramSource, Boolean.class);
     }
 
 

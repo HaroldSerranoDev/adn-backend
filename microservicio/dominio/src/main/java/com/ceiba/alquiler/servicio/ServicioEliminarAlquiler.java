@@ -1,6 +1,6 @@
 package com.ceiba.alquiler.servicio;
 
-import com.ceiba.alquiler.modelo.entidad.Alquiler;
+import com.ceiba.alquiler.excepcion.AlquilerException;
 import com.ceiba.alquiler.puerto.repositorio.RepositorioAlquiler;
 public class ServicioEliminarAlquiler {
 
@@ -14,14 +14,16 @@ public class ServicioEliminarAlquiler {
     }
 
     public void ejecutar(Long id) {
+        validarExistenciaPreviaAlquiler(id);
+
         this.repositorioAlquiler.eliminar(id);
     }
 
 
-    private void validarExistencia(Alquiler alquiler) {
-        boolean existe = this.repositorioAlquiler.existePorId(alquiler.getId());
+    public void validarExistenciaPreviaAlquiler(Long id) {
+        boolean existe = this.repositorioAlquiler.existePorId(id);
         if(!existe) {
-            // lanzar error, objeto no existente
+            throw new AlquilerException(EL_ALQUILER_QUE_INTENTA_ELIMINAR_NO_EXISTE_EN_EL_SISTEMA);
         }
     }
 }

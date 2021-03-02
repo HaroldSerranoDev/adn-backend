@@ -1,9 +1,10 @@
 package com.ceiba.alquiler.adaptador.dao;
 
-import com.ceiba.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
-import com.ceiba.infraestructura.jdbc.sqlstatement.SqlStatement;
 import com.ceiba.alquiler.modelo.dto.DtoAlquiler;
 import com.ceiba.alquiler.puerto.dao.DaoAlquiler;
+import com.ceiba.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
+import com.ceiba.infraestructura.jdbc.sqlstatement.SqlStatement;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -16,6 +17,9 @@ public class DaoAlquilerMysql implements DaoAlquiler {
     @SqlStatement(namespace="alquiler", value="listar")
     private static String sqlListar;
 
+    @SqlStatement(namespace="alquiler", value="obtenerPorId")
+    private static String sqlObtenerPorId;
+
     public DaoAlquilerMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
     }
@@ -26,17 +30,11 @@ public class DaoAlquilerMysql implements DaoAlquiler {
     }
 
     @Override
-    public DtoAlquiler buscarPorIdClienteIdMoto(Long idCliente, Long idMoto) {
-        return null;
+    public DtoAlquiler obtenerPorId(Long id) {
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("idAlquiler", id);
+
+        return (DtoAlquiler) this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlObtenerPorId, paramSource,new MapeoAlquiler());
     }
 
-    @Override
-    public DtoAlquiler buscarPorCedulaClienteYMatriculaMoto(Long idCliente, Long idMoto) {
-        return null;
-    }
-
-    @Override
-    public DtoAlquiler buscarPorId(Long id) {
-        return null;
-    }
 }

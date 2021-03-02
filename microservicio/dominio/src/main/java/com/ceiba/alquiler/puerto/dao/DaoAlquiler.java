@@ -13,20 +13,9 @@ public interface DaoAlquiler {
     List<DtoAlquiler> listar();
 
     /**
-     * Permite buscar un alquiler por id de cliente y id de moto
-     * @return una alquiler
+     * Permite obtener un alquiler por id
+     * @return listado de alquileres
      */
-    DtoAlquiler buscarPorIdClienteIdMoto(Long idCliente,Long idMoto);
+    DtoAlquiler obtenerPorId(Long id);
 
-    /**
-     * Permite buscar un alquiler por cédula de cliente y matricula de moto
-     * @return una alquiler
-     */
-    DtoAlquiler buscarPorCedulaClienteYMatriculaMoto(Long idCliente,Long idMoto);
-
-    /**
-     * Permite buscar una alquiler por id
-     * @return un alquiler
-     */
-    DtoAlquiler buscarPorId(Long id);
 }
