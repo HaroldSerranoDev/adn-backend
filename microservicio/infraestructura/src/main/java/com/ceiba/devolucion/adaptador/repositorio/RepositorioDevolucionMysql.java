@@ -4,6 +4,7 @@ import com.ceiba.devolucion.modelo.entidad.Devolucion;
 import com.ceiba.devolucion.puerto.repositorio.RepositorioDevolucion;
 import com.ceiba.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
 import com.ceiba.infraestructura.jdbc.sqlstatement.SqlStatement;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -13,6 +14,9 @@ public class RepositorioDevolucionMysql implements RepositorioDevolucion {
 
     @SqlStatement(namespace="devolucion", value="crear")
     private static String sqlCrear;
+
+    @SqlStatement(namespace="devolucion", value="existePorIdAlquiler")
+    private static String sqlExistePorIdAlquiler;
 
 
     public RepositorioDevolucionMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
@@ -25,8 +29,11 @@ public class RepositorioDevolucionMysql implements RepositorioDevolucion {
     }
 
     @Override
-    public boolean existe(Long idAlquiler) {
-        return false;
+    public boolean existePorIdAlquiler(Long id) {
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("idAlquiler", id);
+
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorIdAlquiler,paramSource, Boolean.class);
     }
 
 }

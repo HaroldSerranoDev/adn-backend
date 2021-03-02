@@ -16,5 +16,5 @@ public interface RepositorioDevolucion {
      * @param idAlquiler
      * @return si existe o no
      */
-    boolean existe(Long idAlquiler);
+    boolean existePorIdAlquiler(Long idAlquiler);
 }

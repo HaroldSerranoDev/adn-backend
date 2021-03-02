@@ -13,4 +13,5 @@ public class DtoDevolucion {
     private LocalDate fechaDevolucion;
     private int kilometrosFinales;
     private DtoAlquiler alquiler;
+    private double valorPagoFinal;
 }

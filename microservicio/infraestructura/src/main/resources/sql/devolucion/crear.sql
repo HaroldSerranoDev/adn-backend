@@ -1,1 +1,1 @@
-insert into devolucion (fecha_devolucion, km_finales, alquiler_id) values (:fechaDevolucion, :kilometrosFinales, :idAlquiler)
+insert into devolucion (fecha_devolucion, km_finales, alquiler_id,valor_pago_final) values (:fechaDevolucion, :kilometrosFinales, :idAlquiler, :valorPagoFinal)

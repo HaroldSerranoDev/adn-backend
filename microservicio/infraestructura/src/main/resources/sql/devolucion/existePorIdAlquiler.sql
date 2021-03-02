@@ -1,0 +1,1 @@
+select count(1) from devolucion where alquiler_id = :idAlquiler

@@ -20,6 +20,7 @@ public class MapeoDevolucion implements RowMapper<DtoDevolucion>, MapperResult {
         Long id = resultSet.getLong("id_devolucion");
         LocalDate fechaDevolucion = extraerLocalDate(resultSet, "fecha_devolucion");
         int kilometrosFinales = resultSet.getInt("km_finales");
+        double valorPagoFinal = resultSet.getDouble("valor_pago_final");
 
 
         //DtoCliente
@@ -50,7 +51,7 @@ public class MapeoDevolucion implements RowMapper<DtoDevolucion>, MapperResult {
         DtoMoto moto= new DtoMoto(idMoto,matricula,marca,modelo,tipoMoto,kilometrosRecorridos,precioAlquiler);
         DtoAlquiler alquiler = new DtoAlquiler(idAlquiler,fechaAlquiler,fechaEntrega,cliente,moto,valorPago);
 
-        return new DtoDevolucion(id,fechaDevolucion, kilometrosFinales,alquiler);
+        return new DtoDevolucion(id,fechaDevolucion, kilometrosFinales,alquiler,valorPagoFinal);
     }
 
 }
