@@ -32,6 +32,7 @@ public class ServicioCrearAlquilerTest {
     private static final String FECHA_ALQUILER = "2021-03-05";
     private static final String FECHA_ENTREGA = "2021-03-04";
     private static final String FECHA_ENTREGA_DOS = "2021-03-12";
+    private static final String FECHA_ENTREGA_TRES = "2021-03-09";
     private static final String FECHA_ALQUILER_INVALIDA = "2021-02-30";
     private static final String FECHA_ENTREGA_INVALIDA = "2021-03-32";
     private static final String FECHA_ALQUILER_FORMATO_INVALIDO = "01-02-2021";
@@ -246,6 +247,29 @@ public class ServicioCrearAlquilerTest {
 
         Mockito.when(repositorioAlquiler.crear(alquiler)).thenReturn(1L);
 
+
+        // act
+        Long idAlquiler = servicioCrearAlquiler.ejecutar(alquiler);
+        // assert
+        BasePrueba.assertEqualsObject(alquiler.getId(), idAlquiler);
+    }
+
+    @Test
+    public void validarCreacionAlquilerConDiasFestivosTest() {
+        // arrange
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(FORMATO_FECHA);
+
+        Alquiler alquiler = new AlquilerTestDataBuilder().
+                conId(1L).
+                conFechaAlquiler(FECHA_ALQUILER).
+                conFechaEntrega(FECHA_ENTREGA_TRES).
+                build();
+        Mockito.when(repositorioCliente.existePorId(alquiler.getIdCliente())).thenReturn(true);
+        Mockito.when(repositorioMoto.existePorId(alquiler.getIdMoto())).thenReturn(true);
+        Mockito.when(repositorioAlquiler.existeAlquilerPorFechasParaMoto(alquiler.getFechaAlquiler(), alquiler.getIdMoto())).thenReturn(false);
+        Mockito.when(daoMoto.obtenerCostoAlquiler(alquiler.getId())).thenReturn(VALOR_ALQUILER_MOTO);
+
+        Mockito.when(repositorioAlquiler.crear(alquiler)).thenReturn(1L);
 
         // act
         Long idAlquiler = servicioCrearAlquiler.ejecutar(alquiler);

@@ -1,14 +1,20 @@
 package com.ceiba.devolucion.servicio;
 
 import com.ceiba.BasePrueba;
+import com.ceiba.alquiler.modelo.dto.DtoAlquiler;
 import com.ceiba.alquiler.puerto.dao.DaoAlquiler;
 import com.ceiba.alquiler.puerto.repositorio.RepositorioAlquiler;
+import com.ceiba.alquiler.servicio.testdatabuilder.DtoAlquilerTestDataBuilder;
+import com.ceiba.cliente.modelo.entidad.Cliente;
+import com.ceiba.cliente.servicio.testdatabuilder.ClienteTestDataBuilder;
 import com.ceiba.devolucion.excepcion.DevolucionException;
 import com.ceiba.devolucion.modelo.entidad.Devolucion;
 import com.ceiba.devolucion.puerto.repositorio.RepositorioDevolucion;
 import com.ceiba.devolucion.servicio.testdatabuilder.DevolucionTestDataBuilder;
 import com.ceiba.dominio.excepcion.ExcepcionValorObligatorio;
+import com.ceiba.moto.modelo.dto.DtoMoto;
 import com.ceiba.moto.puerto.repositorio.RepositorioMoto;
+import com.ceiba.moto.servicio.testdatabuilder.DtoMotoTestDataBuilder;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
@@ -77,6 +83,31 @@ public class ServicioCrearDevolucionTest {
         DevolucionTestDataBuilder alquilerTestDataBuilder = new DevolucionTestDataBuilder().conIdalquiler(null);
         // act - assert
         BasePrueba.assertThrows(() -> alquilerTestDataBuilder.build(), ExcepcionValorObligatorio.class, DEBE_INGRESAR_EL_IDENTIFICADOR_DEL_ALQUILER);
+    }
+
+    @Test
+    public void validarCrearDevolucionTest() {
+        // arrange
+        Devolucion devolucion = new DevolucionTestDataBuilder().
+                conId(1L).
+                build();
+
+        DtoMoto dtoMoto = new DtoMotoTestDataBuilder().build();
+
+        DtoAlquiler dtoAlquiler = new DtoAlquilerTestDataBuilder().
+                conMoto(dtoMoto).
+                build();
+
+        Mockito.when(repositorioAlquiler.existePorId(devolucion.getIdAlquiler())).thenReturn(true);
+        Mockito.when(repositorioDevolucion.existePorIdAlquiler(devolucion.getIdAlquiler())).thenReturn(false);
+        Mockito.when(daoAlquiler.obtenerPorId(devolucion.getIdAlquiler())).thenReturn(dtoAlquiler);
+        Mockito.when(repositorioDevolucion.crear(devolucion)).thenReturn(devolucion.getId());
+
+        // act
+        Long idDevolucion = servicioCrearDevolucion.ejecutar(devolucion);
+
+        // assert
+        BasePrueba.assertEqualsObject(devolucion.getId(), idDevolucion);
     }
 
 }
