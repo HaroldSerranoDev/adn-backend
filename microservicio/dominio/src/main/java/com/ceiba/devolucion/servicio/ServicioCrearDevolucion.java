@@ -36,7 +36,7 @@ public class ServicioCrearDevolucion {
 
         DtoAlquiler dtoAlquiler = daoAlquiler.obtenerPorId(devolucion.getIdAlquiler());
         DtoMoto moto = dtoAlquiler.getMoto();
-        int kilometrosMoto = moto.getKilometros_recorridos();
+        int kilometrosMoto = moto.getKilometrosRecorridos();
         int diferenciaKilomentros = devolucion.getKilometrosFinales() - kilometrosMoto;
         double costoAlquilerFinal = 0;
 
@@ -48,21 +48,21 @@ public class ServicioCrearDevolucion {
 
         devolucion.setValorPagoFinal(costoAlquilerFinal);
 
-        int totalKilometros = moto.getKilometros_recorridos() + diferenciaKilomentros;
+        int totalKilometros = moto.getKilometrosRecorridos() + diferenciaKilomentros;
 
         this.repositorioMoto.actualizarKilometrosMotoPorId(totalKilometros, moto.getId());
 
         return this.repositorioDevolucion.crear(devolucion);
     }
 
-    public void validarExistenciaPreviaAlquiler(Long id) {
+    private void validarExistenciaPreviaAlquiler(Long id) {
         boolean existe = this.repositorioAlquiler.existePorId(id);
         if (!existe) {
             throw new DevolucionException(EL_ALQUILER_PARA_EL_CUAL_INTENTA_HACER_LA_DEVOLUCION_NO_EXISTE);
         }
     }
 
-    public void validarExistenciaPreviaDevolucionPorIdAlquiler(Devolucion devolucion) {
+    private void validarExistenciaPreviaDevolucionPorIdAlquiler(Devolucion devolucion) {
         boolean existe = this.repositorioDevolucion.existePorIdAlquiler(devolucion.getIdAlquiler());
         if (existe) {
             throw new DevolucionException(LA_DEVOLUCION_QUE_INTENTA_REALIZAR_YA_EXISTE);

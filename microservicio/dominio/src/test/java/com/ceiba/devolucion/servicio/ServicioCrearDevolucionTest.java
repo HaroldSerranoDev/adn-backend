@@ -50,16 +50,17 @@ public class ServicioCrearDevolucionTest {
         Devolucion devolucion = new DevolucionTestDataBuilder().build();
         Mockito.when(repositorioAlquiler.existePorId(devolucion.getIdAlquiler())).thenReturn(false);
         // act - assert
-        BasePrueba.assertThrows(() -> servicioCrearDevolucion.validarExistenciaPreviaAlquiler(devolucion.getIdAlquiler()), DevolucionException.class, EL_ALQUILER_PARA_EL_CUAL_INTENTA_HACER_LA_DEVOLUCION_NO_EXISTE);
+        BasePrueba.assertThrows(() -> servicioCrearDevolucion.ejecutar(devolucion), DevolucionException.class, EL_ALQUILER_PARA_EL_CUAL_INTENTA_HACER_LA_DEVOLUCION_NO_EXISTE);
     }
 
     @Test
     public void validarExcepcionExistenciaDevolucionTest() {
         // arrange
         Devolucion devolucion = new DevolucionTestDataBuilder().build();
+        Mockito.when(repositorioAlquiler.existePorId(devolucion.getIdAlquiler())).thenReturn(true);
         Mockito.when(repositorioDevolucion.existePorIdAlquiler(devolucion.getIdAlquiler())).thenReturn(true);
         // act - assert
-        BasePrueba.assertThrows(() -> servicioCrearDevolucion.validarExistenciaPreviaDevolucionPorIdAlquiler(devolucion), DevolucionException.class, LA_DEVOLUCION_QUE_INTENTA_REALIZAR_YA_EXISTE);
+        BasePrueba.assertThrows(() -> servicioCrearDevolucion.ejecutar(devolucion), DevolucionException.class, LA_DEVOLUCION_QUE_INTENTA_REALIZAR_YA_EXISTE);
     }
 
     @Test

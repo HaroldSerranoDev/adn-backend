@@ -19,7 +19,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-@ContextConfiguration(classes= ApplicationMock.class)
+@ContextConfiguration(classes = ApplicationMock.class)
 @WebMvcTest(ComandoControladorAlquiler.class)
 public class ComandoControladorAlquilerTest {
 
@@ -34,7 +34,7 @@ public class ComandoControladorAlquilerTest {
     private MockMvc mocMvc;
 
     @Test
-    public void crear() throws Exception{
+    public void crear() throws Exception {
         // arrange
         ComandoAlquiler alquiler = new ComandoAlquilerTestDataBuilder().
                 conIdMoto(IDENTIFICADOR_MOTO_CREACION).
@@ -43,15 +43,15 @@ public class ComandoControladorAlquilerTest {
         // act - assert
         mocMvc.perform(
                 post("/alquileres")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(alquiler)))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(alquiler)))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().json("{'valor': 4}"));
     }
 
     @Test
-    public void actualizar() throws Exception{
+    public void actualizar() throws Exception {
         // arrange
         Long id = 1L;
         ComandoAlquiler alquiler = new ComandoAlquilerTestDataBuilder().
@@ -59,7 +59,7 @@ public class ComandoControladorAlquilerTest {
                 build();
 
         // act - assert
-        mocMvc.perform(put("/alquileres/{id}",id)
+        mocMvc.perform(put("/alquileres/{id}", id)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(alquiler)))
                 .andExpect(status().isOk());
@@ -71,7 +71,7 @@ public class ComandoControladorAlquilerTest {
         Long id = 2L;
 
         // act - assert
-        mocMvc.perform(delete("/alquileres/{id}",id)
+        mocMvc.perform(delete("/alquileres/{id}", id)
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());

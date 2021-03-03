@@ -17,13 +17,6 @@ public class MapeoDevolucion implements RowMapper<DtoDevolucion>, MapperResult {
     public DtoDevolucion mapRow(ResultSet resultSet, int rowNum) throws SQLException {
 
 
-        Long idCliente = resultSet.getLong("id_cliente");
-        String nombre = resultSet.getString("nombre");
-        String direccion = resultSet.getString("direccion");
-        String telefono = resultSet.getString("telefono");
-        String cedula = resultSet.getString("cedula");
-        String correo = resultSet.getString("correo");
-
         Long idMoto = resultSet.getLong("id_moto");
         String matricula = resultSet.getString("matricula");
         String marca = resultSet.getString("marca");
@@ -31,6 +24,14 @@ public class MapeoDevolucion implements RowMapper<DtoDevolucion>, MapperResult {
         String tipoMoto = resultSet.getString("tipo_moto");
         int kilometrosRecorridos = resultSet.getInt("kilometros_recorridos");
         double precioAlquiler = resultSet.getDouble("precio_alquiler");
+
+
+        Long idCliente = resultSet.getLong("id_cliente");
+        String nombre = resultSet.getString("nombre");
+        String direccion = resultSet.getString("direccion");
+        String telefono = resultSet.getString("telefono");
+        String cedula = resultSet.getString("cedula");
+        String correo = resultSet.getString("correo");
 
 
         Long idAlquiler = resultSet.getLong("id_alquiler");

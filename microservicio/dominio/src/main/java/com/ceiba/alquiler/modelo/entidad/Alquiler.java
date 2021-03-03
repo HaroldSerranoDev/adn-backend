@@ -65,7 +65,6 @@ public class Alquiler {
 
     public LocalDate obtenerLocalDateDesdeUnString(String fecha) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(FORMATO_FECHA);
-        LocalDate fechaFinal = LocalDate.parse(fecha, formatter);
-        return fechaFinal;
+        return LocalDate.parse(fecha, formatter);
     }
 }

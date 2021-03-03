@@ -20,7 +20,7 @@ public class ServicioEliminarMoto {
     }
 
 
-    public void validarExistenciaMoto(Long id) {
+    private void validarExistenciaMoto(Long id) {
         boolean existe = this.repositorioMoto.existePorId(id);
         if (!existe) {
             throw new MotoException(LA_MOTO_QUE_INTENTA_ELIMINAR_NO_EXISTE_EN_EL_SISTEMA);

@@ -58,94 +58,27 @@ public class ServicioActualizarAlquilerTest {
         Alquiler alquiler = new AlquilerTestDataBuilder().build();
         Mockito.when(repositorioAlquiler.existePorId(alquiler.getId())).thenReturn(false);
         // act - assert
-        BasePrueba.assertThrows(() -> servicioActualizarAlquiler.validarExistenciaPreviaAlquiler(alquiler), AlquilerException.class, EL_ALQUILER_QUE_INTENTA_ACTUALIZAR_NO_EXISTE_EN_EL_SISTEMA);
+        BasePrueba.assertThrows(() -> servicioActualizarAlquiler.ejecutar(alquiler), AlquilerException.class, EL_ALQUILER_QUE_INTENTA_ACTUALIZAR_NO_EXISTE_EN_EL_SISTEMA);
     }
 
-    @Test
-    public void validarExcepcionExistenciaClienteParaAlquilerTest() {
-        // arrange
-        Alquiler alquiler = new AlquilerTestDataBuilder().build();
-        Mockito.when(repositorioCliente.existePorId(alquiler.getIdCliente())).thenReturn(false);
-        // act - assert
-        BasePrueba.assertThrows(() -> servicioActualizarAlquiler.validarExistenciaPreviaCliente(alquiler.getIdCliente()), AlquilerException.class, EL_CLIENTE_QUE_INTENTA_REALIZAR_EL_ALQUILER_NO_EXISTE_EN_EL_SISTEMA);
-    }
-
-    @Test
-    public void validarExcepcionExistenciaMotoParaAlquilerTest() {
-        // arrange
-        Alquiler alquiler = new AlquilerTestDataBuilder().build();
-        Mockito.when(repositorioMoto.existePorId(alquiler.getIdMoto())).thenReturn(false);
-        // act - assert
-        BasePrueba.assertThrows(() -> servicioActualizarAlquiler.validarExistenciaMoto(alquiler.getIdMoto()), AlquilerException.class, LA_MOTO_QUE_INTENTA_ALQUILAR_NO_EXISTE_EN_EL_SISTEMA);
-    }
-
-    @Test
-    public void validarExcepcionExistenciaAlquierMotoParaFechasSeleccionadasTest() {
-        // arrange
-        Alquiler alquiler = new AlquilerTestDataBuilder().build();
-        Mockito.when(repositorioAlquiler.existeAlquilerPorFechasParaMoto(alquiler.getFechaAlquiler(), alquiler.getIdMoto())).thenReturn(true);
-        // act - assert
-        BasePrueba.assertThrows(() -> servicioActualizarAlquiler.validarExistenciaAlquilerActualDeMoto(alquiler.getFechaAlquiler(), alquiler.getIdMoto()), AlquilerException.class, LA_MOTO_QUE_INTENTA_ALQUILAR_SE_ENCUENTRA_OCUPADA);
-    }
-
-
-    @Test
-    public void validarExcepcionNumeroDiasParaAlquilerTest() {
-        // arrange
-        Alquiler alquiler = new AlquilerTestDataBuilder().
-                conFechaEntrega(FECHA_ENTREGA_DOS).
-                build();
-
-        // act - assert
-        BasePrueba.assertThrows(() -> servicioActualizarAlquiler.validarNumeroDiasAlquiler(alquiler.getFechaAlquiler(), alquiler.getFechaEntrega()), AlquilerException.class, LIMITE_DE_DIAS_ALQUILER_SUPERADO);
-    }
-
-    @Test
-    public void validarNumeroDiasAnticipacionSolicitudAlquilerTest() {
-        // arrange
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(FORMATO_FECHA);
-        LocalDate fechaActual = LocalDate.now();
-
-        Alquiler alquiler = new AlquilerTestDataBuilder().
-                conFechaAlquiler(fechaActual.format(formatter)).
-                build();
-        // act - assert
-        BasePrueba.assertThrows(() -> servicioActualizarAlquiler.validarNumeroDiasAnticipacionSolicitudAlquiler(alquiler.getFechaAlquiler()), AlquilerException.class, DEBE_SOLICITAR_EL_ALQUILER_CON_MINIMO_DOS_DIAS_DE_ANTICIPACION);
-    }
-
-    @Test
-    public void validarExistenciaFinesSemanaAlquilerTest() {
-        // arrange
-        Alquiler alquiler = new AlquilerTestDataBuilder().build();
-
-        // act
-        boolean hayFinesDeSemana = servicioActualizarAlquiler.validarExistenciaFinesSemanaAlquiler(alquiler.getFechaAlquiler(), alquiler.getFechaEntrega());
-
-        // assert
-        BasePrueba.assertEqualsObject(hayFinesDeSemana, true);
-    }
-
-    @Test
-    public void validarNoExistenciaFinesSemanaAlquilerTest() {
-
-        // arrange
-        Alquiler alquiler = new AlquilerTestDataBuilder().
-                conFechaEntrega(FECHA_ENTREGA).
-                build();
-
-        // act
-        boolean hayFinesDeSemana = servicioActualizarAlquiler.validarExistenciaFinesSemanaAlquiler(alquiler.getFechaAlquiler(), alquiler.getFechaEntrega());
-
-        // assert
-        BasePrueba.assertEqualsObject(hayFinesDeSemana, false);
-    }
 
     @Test
     public void validarActualizacionAlquilerTest() {
         // arrange
+
+
+        LocalDate fechaAlquilerActualizacion = LocalDate.now();
+        LocalDate fechaEntregaActualizacion = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(FORMATO_FECHA);
+        LocalDate fechaEntregaActualizacionFinal = fechaEntregaActualizacion.plusDays(5);
+        LocalDate fechaAlquilerActualizacionFinal = fechaAlquilerActualizacion.plusDays(3);
+
         Alquiler alquiler = new AlquilerTestDataBuilder().
                 conId(1L).
+                conFechaAlquiler(fechaAlquilerActualizacionFinal.format(formatter)).
+                conFechaEntrega(fechaEntregaActualizacionFinal.format(formatter)).
                 build();
+
         Mockito.when(repositorioAlquiler.existePorId(alquiler.getId())).thenReturn(true);
         Mockito.when(repositorioCliente.existePorId(alquiler.getIdCliente())).thenReturn(true);
         Mockito.when(repositorioMoto.existePorId(alquiler.getIdMoto())).thenReturn(true);

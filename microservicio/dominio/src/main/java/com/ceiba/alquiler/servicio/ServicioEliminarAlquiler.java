@@ -16,12 +16,11 @@ public class ServicioEliminarAlquiler {
 
     public void ejecutar(Long id) {
         validarExistenciaPreviaAlquiler(id);
-
         this.repositorioAlquiler.eliminar(id);
     }
 
 
-    public void validarExistenciaPreviaAlquiler(Long id) {
+    private void validarExistenciaPreviaAlquiler(Long id) {
         boolean existe = this.repositorioAlquiler.existePorId(id);
         if (!existe) {
             throw new AlquilerException(EL_ALQUILER_QUE_INTENTA_ELIMINAR_NO_EXISTE_EN_EL_SISTEMA);

@@ -10,7 +10,6 @@ public class Moto {
     private static final String SE_DEBE_INGRESAR_LA_MATRICULA_DE_LA_MOTO = "Se debe ingresar la matricula de la moto";
     private static final String SE_DEBE_INGRESAR_LA_MARCA_DE_LA_MOTO = "Se debe ingresar la marca de la moto";
     private static final String SE_DEBE_INGRESAR_UNA_MARCA_VALIDA = "Se debe ingresar una marca de moto válida";
-    private static final String SE_DEBE_INGRESAR_UN_MODELO_DE_MOTO_VALIDO = "Se debe ingresar un modelo de moto válido";
     private static final String SE_DEBE_INGRESAR_UN_MODELO_DE_MOTO = "Se debe ingresar un modelo de moto";
     private static final String SE_DEBE_INGRESAR_UN_MODELO_DE_MOTO_POSITIVO = "Se debe ingresar un modelo de moto positivo";
     private static final String SE_DEBE_INGRESAR_UN_TIPO_DE_MOTO_VALIDO = "Se debe ingresar un tipo de moto válido";
@@ -20,7 +19,6 @@ public class Moto {
     private static final String DEBE_INGRESAR_UN_VALOR_POSITIVO_PARA_EL_PRECIO_DE_ALQUILER = "Debe ingresar un valor positivo para el precio de alquiler";
     private static final String DEBE_INGRESAR_UN_VALOR_PARA_EL_PRECIO_DE_ALQUILER = "Debe ingresar un valor para el precio de alquiler";
     private static final int LONGITUD_MINIMA_DE_DATOS = 1;
-    private static final int LONGITUD_MINIMA_KILOMETROS_RECORRIDOS = 1;
 
 
     private Long id;

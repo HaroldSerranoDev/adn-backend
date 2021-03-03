@@ -11,7 +11,7 @@ public class DtoMoto {
     private String marca;
     private int modelo;
     private String tipoMoto;
-    private int kilometros_recorridos;
+    private int kilometrosRecorridos;
     private double precioAlquiler;
 
 }
