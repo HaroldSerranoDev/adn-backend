@@ -30,9 +30,12 @@ public class ServicioCrearAlquilerTest {
     private static final String DEBE_SOLICITAR_SU_ALQUILER_CON_MINIMO_DOS_DIAS_DE_ANTICIPACION = "Debe solicitar su alquiler con mínimo dos días de anticipación.";
     private static final String FORMATO_FECHA = "yyyy-MM-dd";
     private static final String FECHA_ALQUILER = "2021-03-05";
+    private static final String FECHA_ALQUILER_FUTURO = "2030-01-04";
+    private static final String FECHA_ENTREGA_FUTURO = "2030-01-07";
+    private static final String FECHA_ALQUILER_FUTURO_DOS = "2030-01-01";
+    private static final String FECHA_ENTREGA_FUTURO_DOS = "2030-01-04";
     private static final String FECHA_ENTREGA = "2021-03-04";
     private static final String FECHA_ENTREGA_DOS = "2021-03-12";
-    private static final String FECHA_ENTREGA_TRES = "2021-03-09";
     private static final String FECHA_ALQUILER_INVALIDA = "2021-02-30";
     private static final String FECHA_ENTREGA_INVALIDA = "2021-03-32";
     private static final String FECHA_ALQUILER_FORMATO_INVALIDO = "01-02-2021";
@@ -226,18 +229,11 @@ public class ServicioCrearAlquilerTest {
     @Test
     public void validarCreacionAlquilerTest() {
         // arrange
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(FORMATO_FECHA);
-
-        LocalDate fechaAlquilerCreacion = LocalDate.now();
-        LocalDate fechaEntregaCreacion = LocalDate.now();
-
-        LocalDate fechaAlquilerCreacionFinal = fechaAlquilerCreacion.plusDays(3);
-        LocalDate fechaEntregaCreacionFinal = fechaEntregaCreacion.plusDays(5);
 
         Alquiler alquiler = new AlquilerTestDataBuilder().
                 conId(1L).
-                conFechaAlquiler(fechaAlquilerCreacionFinal.format(formatter)).
-                conFechaEntrega(fechaEntregaCreacionFinal.format(formatter)).
+                conFechaAlquiler(FECHA_ALQUILER_FUTURO_DOS).
+                conFechaEntrega(FECHA_ENTREGA_FUTURO_DOS).
                 build();
 
         Mockito.when(repositorioCliente.existePorId(alquiler.getIdCliente())).thenReturn(true);
@@ -255,14 +251,12 @@ public class ServicioCrearAlquilerTest {
     }
 
     @Test
-    public void validarCreacionAlquilerConDiasFestivosTest() {
+    public void validarCreacionAlquilerConFinesDeSemanaTest() {
         // arrange
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(FORMATO_FECHA);
-
         Alquiler alquiler = new AlquilerTestDataBuilder().
                 conId(1L).
-                conFechaAlquiler(FECHA_ALQUILER).
-                conFechaEntrega(FECHA_ENTREGA_TRES).
+                conFechaAlquiler(FECHA_ALQUILER_FUTURO).
+                conFechaEntrega(FECHA_ENTREGA_FUTURO).
                 build();
         Mockito.when(repositorioCliente.existePorId(alquiler.getIdCliente())).thenReturn(true);
         Mockito.when(repositorioMoto.existePorId(alquiler.getIdMoto())).thenReturn(true);

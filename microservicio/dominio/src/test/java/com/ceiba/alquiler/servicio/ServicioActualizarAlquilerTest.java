@@ -15,21 +15,14 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-
 public class ServicioActualizarAlquilerTest {
 
     private static final String EL_ALQUILER_QUE_INTENTA_ACTUALIZAR_NO_EXISTE_EN_EL_SISTEMA = "El alquiler que intenta actualizar no existe en el sistema";
-    private static final String EL_CLIENTE_QUE_INTENTA_REALIZAR_EL_ALQUILER_NO_EXISTE_EN_EL_SISTEMA = "El cliente que realizar el alquiler no existe en el sistema";
-    private static final String LA_MOTO_QUE_INTENTA_ALQUILAR_NO_EXISTE_EN_EL_SISTEMA = "La moto que intenta alquilar no existe en el sistema";
-    private static final String LA_MOTO_QUE_INTENTA_ALQUILAR_SE_ENCUENTRA_OCUPADA = "La moto que intenta alquilar se encuentra ocupada.";
-    private static final String LIMITE_DE_DIAS_ALQUILER_SUPERADO = "Limite de dias de alquiler superado.";
-    private static final String DEBE_SOLICITAR_EL_ALQUILER_CON_MINIMO_DOS_DIAS_DE_ANTICIPACION = "Debe solicitar su alquiler con mínimo dos dias de anticipación.";
-    private static final String FORMATO_FECHA = "yyyy-MM-dd";
-    private static final String FECHA_ENTREGA = "2021-03-04";
-    private static final String FECHA_ENTREGA_DOS = "2021-03-12";
     private static final Double VALOR_ALQUILER_MOTO = 200000D;
+    private static final String FECHA_ALQUILER_FUTURO = "2030-01-04";
+    private static final String FECHA_ENTREGA_FUTURO = "2030-01-07";
+    private static final String FECHA_ALQUILER_FUTURO_DOS = "2030-01-01";
+    private static final String FECHA_ENTREGA_FUTURO_DOS = "2030-01-04";
 
 
     @Mock
@@ -66,27 +59,43 @@ public class ServicioActualizarAlquilerTest {
     public void validarActualizacionAlquilerTest() {
         // arrange
 
-
-        LocalDate fechaAlquilerActualizacion = LocalDate.now();
-        LocalDate fechaEntregaActualizacion = LocalDate.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(FORMATO_FECHA);
-        LocalDate fechaEntregaActualizacionFinal = fechaEntregaActualizacion.plusDays(5);
-        LocalDate fechaAlquilerActualizacionFinal = fechaAlquilerActualizacion.plusDays(3);
-
         Alquiler alquiler = new AlquilerTestDataBuilder().
                 conId(1L).
-                conFechaAlquiler(fechaAlquilerActualizacionFinal.format(formatter)).
-                conFechaEntrega(fechaEntregaActualizacionFinal.format(formatter)).
+                conFechaAlquiler(FECHA_ALQUILER_FUTURO_DOS).
+                conFechaEntrega(FECHA_ENTREGA_FUTURO_DOS).
                 build();
 
-        Mockito.when(repositorioAlquiler.existePorId(alquiler.getId())).thenReturn(true);
         Mockito.when(repositorioCliente.existePorId(alquiler.getIdCliente())).thenReturn(true);
         Mockito.when(repositorioMoto.existePorId(alquiler.getIdMoto())).thenReturn(true);
         Mockito.when(repositorioAlquiler.existeAlquilerPorFechasParaMoto(alquiler.getFechaAlquiler(), alquiler.getIdMoto())).thenReturn(false);
+        Mockito.when(repositorioAlquiler.existePorId(alquiler.getId())).thenReturn(true);
         Mockito.when(daoMoto.obtenerCostoAlquiler(alquiler.getId())).thenReturn(VALOR_ALQUILER_MOTO);
         // act
         servicioActualizarAlquiler.ejecutar(alquiler);
 
+        // assert
+        Mockito.verify(repositorioAlquiler).actualizar(alquiler);
+    }
+
+
+    @Test
+    public void validarActualizacionAlquilerConFinesDeSemanaTest() {
+
+        // arrange
+        Alquiler alquiler = new AlquilerTestDataBuilder().
+                conId(1L).
+                conFechaAlquiler(FECHA_ALQUILER_FUTURO).
+                conFechaEntrega(FECHA_ENTREGA_FUTURO).
+                build();
+
+        Mockito.when(repositorioMoto.existePorId(alquiler.getIdMoto())).thenReturn(true);
+        Mockito.when(repositorioCliente.existePorId(alquiler.getIdCliente())).thenReturn(true);
+        Mockito.when(daoMoto.obtenerCostoAlquiler(alquiler.getId())).thenReturn(VALOR_ALQUILER_MOTO);        Mockito.when(repositorioAlquiler.existePorId(alquiler.getId())).thenReturn(true);
+        Mockito.when(repositorioAlquiler.existePorId(alquiler.getId())).thenReturn(true);
+        Mockito.when(repositorioAlquiler.existeAlquilerPorFechasParaMoto(alquiler.getFechaAlquiler(), alquiler.getIdMoto())).thenReturn(false);
+
+        // act
+        servicioActualizarAlquiler.ejecutar(alquiler);
         // assert
         Mockito.verify(repositorioAlquiler).actualizar(alquiler);
     }

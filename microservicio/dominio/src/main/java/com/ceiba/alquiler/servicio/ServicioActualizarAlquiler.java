@@ -34,14 +34,14 @@ public class ServicioActualizarAlquiler {
         validadorAlquiler.validarNumeroDiasAlquiler(alquiler.getFechaAlquiler(), alquiler.getFechaEntrega());
         validadorAlquiler.validarNumeroDiasAnticipacionSolicitudAlquiler(alquiler.getFechaAlquiler());
 
-        double valorPago = 0;
-        Double costoAlquilerMoto = daoMoto.obtenerCostoAlquiler(alquiler.getIdMoto());
+        Double costoAlquilerMotoActualizacion = daoMoto.obtenerCostoAlquiler(alquiler.getIdMoto());
+        double valorPagoActualizacion = 0;
         if (validadorAlquiler.validarExistenciaFinesSemanaAlquiler(alquiler.getFechaAlquiler(), alquiler.getFechaEntrega())) {
-            valorPago = (costoAlquilerMoto * AUMENTO_COSTO_ALQUILER) + costoAlquilerMoto;
+            valorPagoActualizacion = (costoAlquilerMotoActualizacion * AUMENTO_COSTO_ALQUILER) + costoAlquilerMotoActualizacion;
         } else {
-            valorPago = costoAlquilerMoto;
+            valorPagoActualizacion = costoAlquilerMotoActualizacion;
         }
-        alquiler.setValorPago(valorPago);
+        alquiler.setValorPago(valorPagoActualizacion);
 
 
         this.repositorioAlquiler.actualizar(alquiler);

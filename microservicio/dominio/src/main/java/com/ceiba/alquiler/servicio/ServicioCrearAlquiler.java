@@ -34,11 +34,15 @@ public class ServicioCrearAlquiler {
         validadorAlquiler.validarNumeroDiasAlquiler(alquiler.getFechaAlquiler(), alquiler.getFechaEntrega());
         validadorAlquiler.validarNumeroDiasAnticipacionSolicitudAlquiler(alquiler.getFechaAlquiler());
 
+        double valorPagoCreacion = 0;
+        Double costoAlquilerMotoCreacion = daoMoto.obtenerCostoAlquiler(alquiler.getIdMoto());
+
         if (validadorAlquiler.validarExistenciaFinesSemanaAlquiler(alquiler.getFechaAlquiler(), alquiler.getFechaEntrega())) {
-            Double costoAlquilerMoto = daoMoto.obtenerCostoAlquiler(alquiler.getIdMoto());
-            double valorPago = (costoAlquilerMoto * AUMENTO_COSTO_ALQUILER) + costoAlquilerMoto;
-            alquiler.setValorPago(valorPago);
+            valorPagoCreacion = (costoAlquilerMotoCreacion * AUMENTO_COSTO_ALQUILER) + costoAlquilerMotoCreacion;
+        } else {
+            valorPagoCreacion = costoAlquilerMotoCreacion;
         }
+        alquiler.setValorPago(valorPagoCreacion);
 
         return this.repositorioAlquiler.crear(alquiler);
     }
