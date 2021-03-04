@@ -251,7 +251,7 @@ public class ServicioCrearAlquilerTest {
     }
 
     @Test
-    public void validarCreacionAlquilerConFinesDeSemanaTest() {
+    public void validarCreacionAlquilerConDiasFestivosTest() {
         // arrange
         Alquiler alquiler = new AlquilerTestDataBuilder().
                 conId(1L).
