@@ -33,18 +33,22 @@ public class DtoAlquilerTestDataBuilder {
         this.fechaAlquiler = fechaAlquiler;
         return this;
     }
+
     public DtoAlquilerTestDataBuilder conFechaEntrega(LocalDate fechaEntrega) {
         this.fechaEntrega = fechaEntrega;
         return this;
     }
+
     public DtoAlquilerTestDataBuilder conCliente(DtoCliente cliente) {
         this.cliente = cliente;
         return this;
     }
+
     public DtoAlquilerTestDataBuilder conMoto(DtoMoto moto) {
         this.moto = moto;
         return this;
     }
+
     public DtoAlquilerTestDataBuilder conValorPago(Double valorPago) {
         this.valorPago = valorPago;
         return this;

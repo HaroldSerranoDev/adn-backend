@@ -5,8 +5,6 @@ import com.ceiba.alquiler.modelo.dto.DtoAlquiler;
 import com.ceiba.alquiler.puerto.dao.DaoAlquiler;
 import com.ceiba.alquiler.puerto.repositorio.RepositorioAlquiler;
 import com.ceiba.alquiler.servicio.testdatabuilder.DtoAlquilerTestDataBuilder;
-import com.ceiba.cliente.modelo.entidad.Cliente;
-import com.ceiba.cliente.servicio.testdatabuilder.ClienteTestDataBuilder;
 import com.ceiba.devolucion.excepcion.DevolucionException;
 import com.ceiba.devolucion.modelo.entidad.Devolucion;
 import com.ceiba.devolucion.puerto.repositorio.RepositorioDevolucion;
