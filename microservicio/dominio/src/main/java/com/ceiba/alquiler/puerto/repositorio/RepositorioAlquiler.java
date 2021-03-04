@@ -44,5 +44,5 @@ public interface RepositorioAlquiler {
      * @param idMoto
      * @return si existe o no
      */
-    boolean existeAlquilerPorFechasParaMoto(LocalDate fechaAlquiler, Long idMoto);
+    boolean existeAlquilerPorFechasParaMoto(LocalDate fechaAlquiler, Long idMoto, Long idAlquiler);
 }

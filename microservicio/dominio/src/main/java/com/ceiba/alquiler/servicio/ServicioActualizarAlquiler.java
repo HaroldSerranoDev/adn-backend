@@ -30,7 +30,7 @@ public class ServicioActualizarAlquiler {
         validarExistenciaPreviaAlquiler(alquiler);
         validadorAlquiler.validarExistenciaPreviaCliente(alquiler.getIdCliente());
         validadorAlquiler.validarExistenciaMoto(alquiler.getIdMoto());
-        validadorAlquiler.validarExistenciaAlquilerActualDeMoto(alquiler.getFechaEntrega(), alquiler.getIdMoto());
+        validadorAlquiler.validarExistenciaAlquilerActualDeMoto(alquiler.getFechaEntrega(), alquiler.getIdMoto(), alquiler.getId());
         validadorAlquiler.validarNumeroDiasAlquiler(alquiler.getFechaAlquiler(), alquiler.getFechaEntrega());
         validadorAlquiler.validarNumeroDiasAnticipacionSolicitudAlquiler(alquiler.getFechaAlquiler());
 

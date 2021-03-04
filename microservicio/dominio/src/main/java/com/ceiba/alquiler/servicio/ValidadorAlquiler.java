@@ -47,8 +47,8 @@ public class ValidadorAlquiler {
         }
     }
 
-    public void validarExistenciaAlquilerActualDeMoto(LocalDate fechaAlquiler, Long idMoto) {
-        boolean existe = this.repositorioAlquiler.existeAlquilerPorFechasParaMoto(fechaAlquiler, idMoto);
+    public void validarExistenciaAlquilerActualDeMoto(LocalDate fechaAlquiler, Long idMoto, Long idAlquiler) {
+        boolean existe = this.repositorioAlquiler.existeAlquilerPorFechasParaMoto(fechaAlquiler, idMoto, idAlquiler);
         if (existe) {
             throw new AlquilerException(LA_MOTO_QUE_INTENTA_ALQUILAR_SE_ENCUENTRA_OCUPADA);
         }
