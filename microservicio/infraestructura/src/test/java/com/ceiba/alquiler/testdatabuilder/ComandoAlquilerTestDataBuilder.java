@@ -13,8 +13,8 @@ public class ComandoAlquilerTestDataBuilder {
 
     public ComandoAlquilerTestDataBuilder() {
         this.id = 0L;
-        this.fechaAlquiler = "2021-03-06";
-        this.fechaEntrega = "2021-03-09";
+        this.fechaAlquiler = "2030-01-01";
+        this.fechaEntrega = "2030-01-04";
         this.idCliente = 1L;
         this.idMoto = 1L;
     }

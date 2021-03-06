@@ -23,7 +23,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest(ComandoControladorAlquiler.class)
 public class ComandoControladorAlquilerTest {
 
-    private static final String FECHA_ENTREGA_ACTUALIZACION = "2021-03-10";
     private static final Long IDENTIFICADOR_MOTO_CREACION = 3L;
 
 
@@ -55,7 +54,6 @@ public class ComandoControladorAlquilerTest {
         // arrange
         Long id = 1L;
         ComandoAlquiler alquiler = new ComandoAlquilerTestDataBuilder().
-                conFechaEntrega(FECHA_ENTREGA_ACTUALIZACION).
                 build();
 
         // act - assert

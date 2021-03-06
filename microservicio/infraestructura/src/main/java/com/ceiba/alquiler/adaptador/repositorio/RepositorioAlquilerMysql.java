@@ -59,13 +59,15 @@ public class RepositorioAlquilerMysql implements RepositorioAlquiler {
     }
 
     @Override
-    public boolean existeAlquilerPorFechasParaMoto(LocalDate fechaAlquiler, Long idMoto, Long idAlquiler) {
+    public boolean existeAlquilerPorFechasParaMoto(LocalDate fechaAlquiler, LocalDate fechaEntrega, Long idMoto, Long idAlquiler) {
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(FORMATO_FECHA);
         String fechaAlquilerFinal = fechaAlquiler.format(formatter);
+        String fechaEntregaFinal = fechaEntrega.format(formatter);
 
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("fechaAlquiler", fechaAlquilerFinal);
+        paramSource.addValue("fechaEntrega", fechaEntregaFinal);
         paramSource.addValue("idMoto", idMoto);
         paramSource.addValue("idAlquiler", idAlquiler);
 

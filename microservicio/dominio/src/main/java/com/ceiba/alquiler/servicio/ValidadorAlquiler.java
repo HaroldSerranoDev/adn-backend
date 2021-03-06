@@ -14,7 +14,7 @@ public class ValidadorAlquiler {
     private static final String EL_CLIENTE_QUE_INTENTA_REALIZAR_EL_ALQUILER_NO_EXISTE_EN_EL_SISTEMA = "El cliente que realizar el alquiler no existe en el sistema";
     private static final String LA_MOTO_QUE_INTENTA_ALQUILAR_NO_EXISTE_EN_EL_SISTEMA = "La moto que intenta alquilar no existe en el sistema";
     private static final String LA_MOTO_QUE_INTENTA_ALQUILAR_SE_ENCUENTRA_OCUPADA = "La moto que intenta alquilar se encuentra ocupada.";
-    private static final String LIMITE_DE_DIAS_ALQUILER_SUPERADO = "Limite de dias de alquiler superado.";
+    private static final String LIMITE_DE_DIAS_ALQUILER_SUPERADO = "Limite de dias de alquiler superado, máximo permitido (5 días).";
     private static final String DEBE_SOLICITAR_SU_ALQUILER_CON_MINIMO_DOS_DIAS_DE_ANTICIPACION = "Debe solicitar su alquiler con mínimo dos días de anticipación.";
     private static final int LIMITE_DIAS_DE_ALQUILER = 5;
     private static final int LIMITE_INFERIOR_DIAS_SOLICITUD_ALQUILER = 2;
@@ -47,8 +47,8 @@ public class ValidadorAlquiler {
         }
     }
 
-    public void validarExistenciaAlquilerActualDeMoto(LocalDate fechaAlquiler, Long idMoto, Long idAlquiler) {
-        boolean existe = this.repositorioAlquiler.existeAlquilerPorFechasParaMoto(fechaAlquiler, idMoto, idAlquiler);
+    public void validarExistenciaAlquilerActualDeMoto(LocalDate fechaAlquiler, LocalDate fechaEntrega, Long idMoto, Long idAlquiler) {
+        boolean existe = this.repositorioAlquiler.existeAlquilerPorFechasParaMoto(fechaAlquiler, fechaEntrega, idMoto, idAlquiler);
         if (existe) {
             throw new AlquilerException(LA_MOTO_QUE_INTENTA_ALQUILAR_SE_ENCUENTRA_OCUPADA);
         }

@@ -1,1 +1,1 @@
-select count(1) from alquiler where (:fechaAlquiler BETWEEN fecha_alquiler and fecha_entrega) and moto_id = :idMoto and id != :idAlquiler
+select count(1) from alquiler where ((:fechaAlquiler BETWEEN fecha_alquiler and fecha_entrega) or (:fechaEntrega BETWEEN fecha_alquiler and fecha_entrega)) and moto_id = :idMoto and id != :idAlquiler

@@ -38,11 +38,11 @@ public interface RepositorioAlquiler {
 
 
     /**
-     * Permite validar si existe un alquiler para una moto por fechaAlquiler
+     * Permite validar si existe un alquiler para una moto por fechaAlquiler y fechaentrega
      *
      * @param fechaAlquiler
      * @param idMoto
      * @return si existe o no
      */
-    boolean existeAlquilerPorFechasParaMoto(LocalDate fechaAlquiler, Long idMoto, Long idAlquiler);
+    boolean existeAlquilerPorFechasParaMoto(LocalDate fechaAlquiler, LocalDate fechaEntrega, Long idMoto, Long idAlquiler);
 }
