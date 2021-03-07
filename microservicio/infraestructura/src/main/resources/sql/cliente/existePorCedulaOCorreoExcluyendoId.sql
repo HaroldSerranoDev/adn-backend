@@ -1,1 +1,1 @@
-select count(1) from cliente where (cedula = :cedula or correo like :correo) and id != :id
+select count(1) from cliente where (cedula = :cedula or correo = :correo) and id != :id

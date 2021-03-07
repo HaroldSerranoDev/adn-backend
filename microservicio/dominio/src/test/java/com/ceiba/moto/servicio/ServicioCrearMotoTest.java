@@ -21,7 +21,6 @@ public class ServicioCrearMotoTest {
     private static final String SE_DEBE_INGRESAR_LA_MATRICULA_DE_LA_MOTO = "Se debe ingresar la matricula de la moto";
     private static final String SE_DEBE_INGRESAR_LA_MARCA_DE_LA_MOTO = "Se debe ingresar la marca de la moto";
     private static final String SE_DEBE_INGRESAR_UNA_MARCA_VALIDA = "Se debe ingresar una marca de moto válida";
-    private static final String SE_DEBE_INGRESAR_UN_MODELO_DE_MOTO_VALIDO = "Se debe ingresar un modelo de moto válido";
     private static final String SE_DEBE_INGRESAR_UN_MODELO_DE_MOTO_POSITIVO = "Se debe ingresar un modelo de moto positivo";
 
     private static final String SE_DEBE_INGRESAR_UN_MODELO_DE_MOTO = "Se debe ingresar un modelo de moto";

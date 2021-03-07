@@ -49,7 +49,7 @@ public class RepositorioClienteMysql implements RepositorioCliente {
     public boolean existePorCedulaOCorreoExcluyendoId(String cedula, String correo, Long id) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("cedula", cedula);
-        paramSource.addValue("correo", '%' + correo + '%');
+        paramSource.addValue("correo", correo);
         paramSource.addValue("id", id);
 
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorCedulaOCorreoExcluyendoId, paramSource, Boolean.class);

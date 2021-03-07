@@ -111,7 +111,7 @@ public class ServicioCrearAlquilerTest {
 
         Mockito.when(repositorioCliente.existePorId(alquiler.getIdCliente())).thenReturn(true);
         Mockito.when(repositorioMoto.existePorId(alquiler.getIdMoto())).thenReturn(true);
-        Mockito.when(repositorioAlquiler.existeAlquilerPorFechasParaMoto(alquiler.getFechaAlquiler(), alquiler.getFechaEntrega() ,alquiler.getIdMoto(), alquiler.getId())).thenReturn(false);
+        Mockito.when(repositorioAlquiler.existeAlquilerPorFechasParaMoto(alquiler.getFechaAlquiler(), alquiler.getFechaEntrega(), alquiler.getIdMoto(), alquiler.getId())).thenReturn(false);
 
         // act - assert
         BasePrueba.assertThrows(() -> servicioCrearAlquiler.ejecutar(alquiler), AlquilerException.class, LIMITE_DE_DIAS_ALQUILER_SUPERADO);
@@ -238,7 +238,7 @@ public class ServicioCrearAlquilerTest {
 
         Mockito.when(repositorioCliente.existePorId(alquiler.getIdCliente())).thenReturn(true);
         Mockito.when(repositorioMoto.existePorId(alquiler.getIdMoto())).thenReturn(true);
-        Mockito.when(repositorioAlquiler.existeAlquilerPorFechasParaMoto(alquiler.getFechaAlquiler(), alquiler.getFechaEntrega(),alquiler.getIdMoto(), alquiler.getId())).thenReturn(false);
+        Mockito.when(repositorioAlquiler.existeAlquilerPorFechasParaMoto(alquiler.getFechaAlquiler(), alquiler.getFechaEntrega(), alquiler.getIdMoto(), alquiler.getId())).thenReturn(false);
         Mockito.when(daoMoto.obtenerCostoAlquiler(alquiler.getId())).thenReturn(VALOR_ALQUILER_MOTO);
 
         Mockito.when(repositorioAlquiler.crear(alquiler)).thenReturn(1L);
@@ -260,7 +260,7 @@ public class ServicioCrearAlquilerTest {
                 build();
         Mockito.when(repositorioCliente.existePorId(alquiler.getIdCliente())).thenReturn(true);
         Mockito.when(repositorioMoto.existePorId(alquiler.getIdMoto())).thenReturn(true);
-        Mockito.when(repositorioAlquiler.existeAlquilerPorFechasParaMoto(alquiler.getFechaAlquiler(), alquiler.getFechaEntrega(),alquiler.getIdMoto(), alquiler.getId())).thenReturn(false);
+        Mockito.when(repositorioAlquiler.existeAlquilerPorFechasParaMoto(alquiler.getFechaAlquiler(), alquiler.getFechaEntrega(), alquiler.getIdMoto(), alquiler.getId())).thenReturn(false);
         Mockito.when(daoMoto.obtenerCostoAlquiler(alquiler.getId())).thenReturn(VALOR_ALQUILER_MOTO);
 
         Mockito.when(repositorioAlquiler.crear(alquiler)).thenReturn(1L);

@@ -93,7 +93,7 @@ public class ServicioActualizarAlquilerTest {
         Mockito.when(daoMoto.obtenerCostoAlquiler(alquiler.getId())).thenReturn(VALOR_ALQUILER_MOTO);
         Mockito.when(repositorioAlquiler.existePorId(alquiler.getId())).thenReturn(true);
         Mockito.when(repositorioAlquiler.existePorId(alquiler.getId())).thenReturn(true);
-        Mockito.when(repositorioAlquiler.existeAlquilerPorFechasParaMoto(alquiler.getFechaAlquiler(), alquiler.getFechaEntrega() ,alquiler.getIdMoto(), alquiler.getId())).thenReturn(false);
+        Mockito.when(repositorioAlquiler.existeAlquilerPorFechasParaMoto(alquiler.getFechaAlquiler(), alquiler.getFechaEntrega(), alquiler.getIdMoto(), alquiler.getId())).thenReturn(false);
 
         // act
         servicioActualizarAlquiler.ejecutar(alquiler);
