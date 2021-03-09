@@ -122,9 +122,11 @@ public class ServicioCrearAlquilerTest {
         // arrange
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(FORMATO_FECHA);
         LocalDate fechaActual = LocalDate.now();
+        LocalDate fechaEntrega = LocalDate.now().plusDays(2);
 
         Alquiler alquiler = new AlquilerTestDataBuilder().
                 conFechaAlquiler(fechaActual.format(formatter)).
+                conFechaEntrega(fechaEntrega.format(formatter)).
                 build();
 
         Mockito.when(repositorioCliente.existePorId(alquiler.getIdCliente())).thenReturn(true);
