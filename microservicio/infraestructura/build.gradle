@@ -16,6 +16,7 @@ dependencies {
     testImplementation project.ext.springboottest
     compile project.ext.springbootweb
     compile project.ext.swagger
+    compile project.ext.azurestorage
 
     compile project.ext.apachecommons
     compile project.ext.springbootjdbc
