@@ -1,0 +1,30 @@
+#version: '3.9'
+#services:
+#  alquiler-motos-api:
+#    container_name: alquiler-motos-api
+#    image: alquiler-motos-api
+#    build: .
+#    ports:
+#      - "8084:8084"
+#    depends_on:
+#      - alquiler-motos-db
+#    networks:
+#      - netapp
+#  alquiler-motos-db:
+#    container_name: alquiler-motos-db
+#    image: mysql:5.7
+#    ports:
+#      - "3306:3306"
+#    environment:
+#      MYSQL_ROOT_PASSWORD: adn
+#      MYSQL_USER: adn
+#      MYSQL_DATABASE: alquiler-motos
+#      MYSQL_PASSWORD: adn
+#    volumes:
+#      - "dbvolume:/var/lib/mysql"
+#    networks:
+#      - netapp
+#volumes:
+#  dbvolume:
+#networks:
+#  netapp:
