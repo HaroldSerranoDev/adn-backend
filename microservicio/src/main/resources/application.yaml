@@ -1,10 +1,40 @@
+spring:
+  profiles:
+    active: "prod"
+---
 jasypt:
   encryptor:
     password: ${jasyptpwd:mi-adn-secreto}
     algorithm: PBEWithMD5AndDES
 
 server:
-  allowedOrigins: http://localhost:4200
+  port: 8084
+  servlet:
+    context-path: /alquiler-motos
+    session:
+      timeout: 21600s
+spring:
+  profiles: dev
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    jdbcUrl: jdbc:mysql://alquiler-motos-db:3306/alquiler-motos
+    username: adn
+    password: ENC(NeBzn0lkscD59IhfSdBmuw==)
+    hikari:
+      poolName: pool
+  cloud:
+    azure:
+      almacenamiento:
+        nombre: almacenamientoadn
+        clave: I36vjCQYcCOPUFrkhVg2Wgy3XHjDVFUd27gt/JAfkGCVcXcLkREfCVP0DqoBPhcAJ2n38W7Ys/dyH67v8vzZTg==;EndpointSuffix=core.windows.net
+---
+jasypt:
+  encryptor:
+    password: ${jasyptpwd:mi-adn-secreto}
+    algorithm: PBEWithMD5AndDES
+
+server:
   port: 8084
   servlet:
     context-path: /alquiler-motos
@@ -12,11 +42,17 @@ server:
       timeout: 21600s
 
 spring:
+  profiles: prod
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     type: com.zaxxer.hikari.HikariDataSource
-    jdbcUrl: jdbc:mysql://localhost:3306/alquiler-motos?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
-    username: adn
-    password: ENC(NeBzn0lkscD59IhfSdBmuw==)
+    jdbcUrl: jdbc:mysql://adn-db.mysql.database.azure.com:3306/alquiler-motos?useSSL=true&requireSSL=false
+    username: adn_root@adn-db
+    password: ENC(vR99G1F9A5yny8mpKvbfmErpEmF2wWSa)
     hikari:
       poolName: pool
+  cloud:
+    azure:
+      almacenamiento:
+        nombre: almacenamientoadn
+        clave: I36vjCQYcCOPUFrkhVg2Wgy3XHjDVFUd27gt/JAfkGCVcXcLkREfCVP0DqoBPhcAJ2n38W7Ys/dyH67v8vzZTg==;EndpointSuffix=core.windows.net
