@@ -1,4 +1,4 @@
-package com.ceiba.Mensaje.comando;
+package com.ceiba.cola_mensajeria.comando;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

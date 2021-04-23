@@ -9,6 +9,8 @@ import com.ceiba.cliente.puerto.repositorio.RepositorioCliente;
 import com.ceiba.cliente.servicio.ServicioActualizarCliente;
 import com.ceiba.cliente.servicio.ServicioCrearCliente;
 import com.ceiba.cliente.servicio.ServicioEliminarCliente;
+import com.ceiba.cola_mensajeria.puerto.envio_mensaje.EnvioMensaje;
+import com.ceiba.cola_mensajeria.servicio.ServicioEnviarMensaje;
 import com.ceiba.devolucion.puerto.repositorio.RepositorioDevolucion;
 import com.ceiba.devolucion.servicio.ServicioCrearDevolucion;
 import com.ceiba.moto.puerto.dao.DaoMoto;
@@ -75,5 +77,10 @@ public class BeanServicio {
     @Bean
     public ServicioEliminarMoto servicioEliminarMoto(RepositorioMoto repositorioMoto) {
         return new ServicioEliminarMoto(repositorioMoto);
+    }
+
+    @Bean
+    public ServicioEnviarMensaje servicioEnviarMensaje(EnvioMensaje envioMensaje) {
+        return new ServicioEnviarMensaje(envioMensaje);
     }
 }
