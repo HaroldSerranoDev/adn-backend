@@ -17,6 +17,8 @@ dependencies {
     compile project.ext.springbootweb
     compile project.ext.swagger
     compile project.ext.azurestorage
+    compile project.ext.azurecore
+    compile project.ext.azurservicebus
 
     compile project.ext.apachecommons
     compile project.ext.springbootjdbc

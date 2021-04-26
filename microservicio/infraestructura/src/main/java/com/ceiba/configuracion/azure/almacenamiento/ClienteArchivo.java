@@ -1,4 +1,4 @@
-package com.ceiba.configuracion;
+package com.ceiba.configuracion.azure.almacenamiento;
 
 import com.microsoft.azure.storage.CloudStorageAccount;
 import com.microsoft.azure.storage.blob.CloudBlobClient;
@@ -6,21 +6,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.net.URISyntaxException;
-import java.security.InvalidKeyException;
-
 @Configuration
-public class ClienteArchivoAzure {
+public class ClienteArchivo {
 
     private CloudStorageAccount almacenamientoAzure;
 
     @Autowired
-    public ClienteArchivoAzure(AlmacenamientoAzure almacenamientoAzure) throws URISyntaxException, InvalidKeyException {
-        this.almacenamientoAzure = almacenamientoAzure.cuentaAlmacenamiento();
+    public ClienteArchivo(CloudStorageAccount almacenamiento) {
+        this.almacenamientoAzure = almacenamiento;
     }
 
     @Bean
-    public CloudBlobClient clienteArchivo() {
+    public CloudBlobClient obtenerclienteArchivo() {
         return almacenamientoAzure.createCloudBlobClient();
     }
 }

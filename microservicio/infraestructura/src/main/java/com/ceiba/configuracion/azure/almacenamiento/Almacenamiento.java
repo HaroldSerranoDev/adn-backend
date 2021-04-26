@@ -1,4 +1,4 @@
-package com.ceiba.configuracion;
+package com.ceiba.configuracion.azure.almacenamiento;
 
 import com.microsoft.azure.storage.CloudStorageAccount;
 import org.springframework.beans.factory.annotation.Value;
@@ -10,7 +10,7 @@ import java.net.URISyntaxException;
 import java.security.InvalidKeyException;
 
 @Configuration
-public class AlmacenamientoAzure {
+public class Almacenamiento {
 
     @Value("${spring.cloud.azure.almacenamiento.nombre}")
     private String nombreCuenta;

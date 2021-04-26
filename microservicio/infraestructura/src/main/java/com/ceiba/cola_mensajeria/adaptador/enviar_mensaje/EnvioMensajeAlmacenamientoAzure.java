@@ -1,21 +1,20 @@
-package com.ceiba.cola_mensajeria.adaptador.enviar_mensaje_azure;
+package com.ceiba.cola_mensajeria.adaptador.enviar_mensaje;
 
 import com.ceiba.cola_mensajeria.puerto.envio_mensaje.EnvioMensaje;
-import com.ceiba.configuracion.ClienteColaMensajeriaAzure;
 import com.microsoft.azure.storage.queue.CloudQueue;
 import com.microsoft.azure.storage.queue.CloudQueueClient;
 import com.microsoft.azure.storage.queue.CloudQueueMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-@Component
-public class EnvioMensajeAzure implements EnvioMensaje {
+@Component("envioMensajeAlmacenamientoAzure")
+public class EnvioMensajeAlmacenamientoAzure implements EnvioMensaje {
 
     private final CloudQueueClient clienteColaMensajeriaAzure;
 
     @Autowired
-    public EnvioMensajeAzure(ClienteColaMensajeriaAzure clienteColaMensajeriaAzure){
-        this.clienteColaMensajeriaAzure = clienteColaMensajeriaAzure.clienteColaMensajería();
+    public EnvioMensajeAlmacenamientoAzure(CloudQueueClient clienteAlmacenamientoColaMensajeriaAzure){
+        this.clienteColaMensajeriaAzure = clienteAlmacenamientoColaMensajeriaAzure;
     }
 
     @Override

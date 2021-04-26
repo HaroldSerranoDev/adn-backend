@@ -1,20 +1,19 @@
 package com.ceiba.cola_mensajeria.consulta;
 
 import com.ceiba.cola_mensajeria.modelo.dto.DtoMensaje;
-import com.ceiba.cola_mensajeria.puerto.obtener_mensajes.ObtenerMensajes;
+import com.ceiba.cola_mensajeria.servicio.ServicioObtenerMensaje;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ManejadorObtenerMensaje {
 
-    private final ObtenerMensajes obtenerMensajes;
+    private final ServicioObtenerMensaje servicioEnviarMensaje;
 
-    public ManejadorObtenerMensaje(ObtenerMensajes obtenerMensajes) {
-        this.obtenerMensajes = obtenerMensajes;
+    public ManejadorObtenerMensaje(ServicioObtenerMensaje servicioEnviarMensaje) {
+        this.servicioEnviarMensaje = servicioEnviarMensaje;
 
     }
-
     public DtoMensaje ejecutar(String nombreCola) {
-        return obtenerMensajes.obtenerMensajeUnico(nombreCola);
+        return servicioEnviarMensaje.ejecutar(nombreCola);
     }
 }

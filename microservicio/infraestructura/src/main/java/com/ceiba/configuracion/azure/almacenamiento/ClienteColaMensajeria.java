@@ -1,4 +1,4 @@
-package com.ceiba.configuracion;
+package com.ceiba.configuracion.azure.almacenamiento;
 
 import com.microsoft.azure.storage.CloudStorageAccount;
 import com.microsoft.azure.storage.queue.CloudQueueClient;
@@ -10,13 +10,13 @@ import java.net.URISyntaxException;
 import java.security.InvalidKeyException;
 
 @Configuration
-public class ClienteColaMensajeriaAzure {
+public class ClienteColaMensajeria {
 
     private CloudStorageAccount almacenamientoAzure;
 
     @Autowired
-    public ClienteColaMensajeriaAzure(AlmacenamientoAzure almacenamientoAzure) throws URISyntaxException, InvalidKeyException {
-        this.almacenamientoAzure = almacenamientoAzure.cuentaAlmacenamiento();
+    public ClienteColaMensajeria(CloudStorageAccount almacenamiento) throws URISyntaxException, InvalidKeyException {
+        this.almacenamientoAzure = almacenamiento;
     }
 
     @Bean

@@ -1,6 +1,5 @@
 package com.ceiba.archivo;
 
-import com.ceiba.configuracion.ClienteArchivoAzure;
 import com.microsoft.azure.storage.StorageException;
 import com.microsoft.azure.storage.blob.CloudBlob;
 import com.microsoft.azure.storage.blob.CloudBlobClient;
@@ -24,8 +23,8 @@ public class ComandoControladorArchivo {
     private final String NOMBRE_COLA="adn";
 
     @Autowired
-    public ComandoControladorArchivo(ClienteArchivoAzure clienteArchivoAzure) {
-        this.clienteArchivo = clienteArchivoAzure.clienteArchivo();
+    public ComandoControladorArchivo(CloudBlobClient clienteArchivo) {
+        this.clienteArchivo = clienteArchivo;
     }
 
     @GetMapping

@@ -40,6 +40,8 @@ allprojects {
 
     project.ext.h2 = ["com.h2database:h2:1.4.194"]
     project.ext.azurestorage = ["com.microsoft.azure:azure-storage:8.6.6"]
+    project.ext.azurecore = ["com.azure:azure-core:1.13.0"]
+    project.ext.azurservicebus = ["com.azure:azure-messaging-servicebus:7.0.2"]
 }
 
 buildscript {
@@ -75,6 +77,9 @@ dependencies {
     implementation project.ext.springbootundertow
     implementation project.ext.flyway
     implementation project.ext.azurestorage
+    implementation project.ext.azurecore
+    implementation project.ext.azurservicebus
+
 
     implementation project(':infraestructura')
 }

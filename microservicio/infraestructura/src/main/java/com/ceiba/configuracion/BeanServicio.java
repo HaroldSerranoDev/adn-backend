@@ -10,7 +10,9 @@ import com.ceiba.cliente.servicio.ServicioActualizarCliente;
 import com.ceiba.cliente.servicio.ServicioCrearCliente;
 import com.ceiba.cliente.servicio.ServicioEliminarCliente;
 import com.ceiba.cola_mensajeria.puerto.envio_mensaje.EnvioMensaje;
+import com.ceiba.cola_mensajeria.puerto.obtener_mensajes.ObtenerMensajes;
 import com.ceiba.cola_mensajeria.servicio.ServicioEnviarMensaje;
+import com.ceiba.cola_mensajeria.servicio.ServicioObtenerMensaje;
 import com.ceiba.devolucion.puerto.repositorio.RepositorioDevolucion;
 import com.ceiba.devolucion.servicio.ServicioCrearDevolucion;
 import com.ceiba.moto.puerto.dao.DaoMoto;
@@ -18,6 +20,7 @@ import com.ceiba.moto.puerto.repositorio.RepositorioMoto;
 import com.ceiba.moto.servicio.ServicioActualizarMoto;
 import com.ceiba.moto.servicio.ServicioCrearMoto;
 import com.ceiba.moto.servicio.ServicioEliminarMoto;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -80,7 +83,12 @@ public class BeanServicio {
     }
 
     @Bean
-    public ServicioEnviarMensaje servicioEnviarMensaje(EnvioMensaje envioMensaje) {
+    public ServicioEnviarMensaje servicioEnviarMensaje(@Qualifier("envioMensajeBusServicioAzure") EnvioMensaje envioMensaje) {
         return new ServicioEnviarMensaje(envioMensaje);
+    }
+
+    @Bean
+    public ServicioObtenerMensaje servicioObtenerMensaje(@Qualifier("obtenerMensajesBusServicioAzure") ObtenerMensajes obtenerMensajes) {
+        return new ServicioObtenerMensaje(obtenerMensajes);
     }
 }

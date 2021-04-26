@@ -56,3 +56,5 @@ spring:
       almacenamiento:
         nombre: almacenamientoadn
         clave: I36vjCQYcCOPUFrkhVg2Wgy3XHjDVFUd27gt/JAfkGCVcXcLkREfCVP0DqoBPhcAJ2n38W7Ys/dyH67v8vzZTg==;EndpointSuffix=core.windows.net
+      servicebus:
+        endpoint: Endpoint=sb://adnbus.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=4zDqlyX6wR/9OjJHqvR6lDxMn6P86PWCsoNBicDmuKM=
