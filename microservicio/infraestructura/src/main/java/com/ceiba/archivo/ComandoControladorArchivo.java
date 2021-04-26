@@ -13,12 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.net.URISyntaxException;
-import java.security.InvalidKeyException;
-import java.util.Locale;
 
 @RestController
 @RequestMapping("/archivo")
@@ -26,18 +21,19 @@ import java.util.Locale;
 public class ComandoControladorArchivo {
 
     private final CloudBlobClient clienteArchivo;
+    private final String NOMBRE_COLA="adn";
 
     @Autowired
     public ComandoControladorArchivo(ClienteArchivoAzure clienteArchivoAzure) {
         this.clienteArchivo = clienteArchivoAzure.clienteArchivo();
     }
 
-    @GetMapping(value = "/{nombreArchivo}")
+    @GetMapping
     @ApiOperation("Obtener Imagen")
-    public void obtenerImagen(@PathVariable String nombreArchivo, HttpServletResponse respuesta) throws IOException, URISyntaxException, InvalidKeyException, StorageException {
-        CloudBlobContainer contenedor = obtenerContenedorAlmacenamiento("adn");
+    public void obtenerImagen(@RequestParam String nombreArchivo, HttpServletResponse respuesta) throws Exception {
+        CloudBlobContainer contenedor = obtenerContenedorAlmacenamiento(NOMBRE_COLA);
 
-        CloudBlob referenciaArchivo = contenedor.getBlobReferenceFromServer(nombreArchivo.toLowerCase(Locale.ROOT));
+        CloudBlob referenciaArchivo = contenedor.getBlobReferenceFromServer(nombreArchivo);
 
         referenciaArchivo.download(respuesta.getOutputStream());
     }
@@ -45,26 +41,10 @@ public class ComandoControladorArchivo {
 
     @PostMapping
     @ApiOperation("Enviar archivo")
-    public Object subirImagen(@RequestBody MultipartFile archivo) throws IOException, URISyntaxException, InvalidKeyException, StorageException {
-        CloudBlobContainer contenedor = obtenerContenedorAlmacenamiento("adn");
-
-        File archivoCargar = convertirDeMultipartAFile(archivo);
-        CloudBlockBlob bloqueReferenciaArchivo = contenedor.getBlockBlobReference(archivoCargar.getName().toLowerCase());
-
-        //Creating blob and uploading file to it
-        bloqueReferenciaArchivo.uploadFromFile(archivoCargar.getAbsolutePath().toLowerCase(Locale.ROOT));
-        archivoCargar.delete();
-
-        return "Archivo: " + archivoCargar.getName() + " cargado con éxito";
-    }
-
-    private File convertirDeMultipartAFile(MultipartFile archivoMultipart) throws IOException {
-        File archivoConvertido = new File(archivoMultipart.getOriginalFilename());
-        archivoConvertido.createNewFile();
-        FileOutputStream fileOutputStream = new FileOutputStream(archivoConvertido);
-        fileOutputStream.write(archivoMultipart.getBytes());
-        fileOutputStream.close();
-        return archivoConvertido;
+    public void subirImagen(@RequestParam MultipartFile archivo) throws Exception{
+        CloudBlobContainer contenedor = obtenerContenedorAlmacenamiento(NOMBRE_COLA);
+        CloudBlockBlob bloqueReferenciaArchivo = contenedor.getBlockBlobReference(archivo.getOriginalFilename());
+        bloqueReferenciaArchivo.upload(archivo.getInputStream(), -1);
     }
 
     private CloudBlobContainer obtenerContenedorAlmacenamiento(String nombreContenedor) throws URISyntaxException, StorageException {
